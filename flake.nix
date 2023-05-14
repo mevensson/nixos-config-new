@@ -7,18 +7,25 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, devshell }:
-    flake-utils.lib.eachDefaultSystem (system: {
-      devShell =
+  outputs = { self, ... } @inputs: {
+    nixosConfigurations = {
+      ryzen = {
+      };
+      t14g1 = {
+      };
+    };
+  }
+  //
+  inputs.flake-utils.lib.eachDefaultSystem (system: {
+    devShells = {
+      default = 
         let
-          pkgs = import nixpkgs {
+          pkgs = import inputs.nixpkgs {
             inherit system;
-
-            overlays = [ devshell.overlays.default ];
+            overlays = [ inputs.devshell.overlays.default ];
           };
         in
-        pkgs.devshell.mkShell {
-          imports = [ (pkgs.devshell.importTOML ./devshell.toml) ];
-        };
-    });
+        pkgs.devshell.fromTOML ./devshell.toml;
+    };
+  });
 }
