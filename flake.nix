@@ -3,6 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    agenix.url = "github:ryantm/agenix";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     devshell.url = "github:numtide/devshell";
     treefmt-nix.url = "github:numtide/treefmt-nix";
@@ -20,10 +23,12 @@
         nixosConfigurations = {
           ryzen = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
+            specialArgs = inputs;
             modules = [
               ./hosts/ryzen/configuration.nix
 
               ./profiles/boot/systemd-boot.nix
+              ./profiles/core/agenix.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
 
@@ -32,10 +37,12 @@
           };
           t14g1 = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
+            specialArgs = inputs;
             modules = [
               ./hosts/t14g1/configuration.nix
 
               ./profiles/boot/systemd-boot.nix
+              ./profiles/core/agenix.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
 
@@ -71,6 +78,7 @@
             pkgs.rnix-lsp
             pkgs.vscode
             config.treefmt.build.wrapper
+            inputs.agenix.packages.${system}.default
           ];
         };
 
