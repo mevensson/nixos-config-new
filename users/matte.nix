@@ -10,12 +10,43 @@ in
     matte_id_ed25519.owner = "matte";
   };
 
+  home-manager.users.matte =
+    { lib
+    , ...
+    }: {
+      home = {
+        activation.myActivationAction = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          mkdir -p ~/.ssh
+          ln -sf /run/agenix/matte_id_ed25519 ~/.ssh/id_ed25519
+        '';
+
+        file = {
+          ".ssh/id_ed25519.pub".source = ./id_ed25519.pub;
+        };
+
+        # This value determines the Home Manager release that your
+        # configuration is compatible with. This helps avoid breakage
+        # when a new Home Manager release introduces backwards
+        # incompatible changes.
+        #
+        # You can update Home Manager without changing this value. See
+        # the Home Manager release notes for a list of state version
+        # changes in each release.
+        stateVersion = "22.05";
+      };
+
+      programs.git = {
+        userName = name;
+        userEmail = email;
+      };
+    };
+
   users.users.matte = {
     uid = 1000;
     passwordFile = config.age.secrets.matte_password.path;
     description = name;
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    openssh.authorizedKeys.keyFiles = [ ./id_ed25519.pub ];
   };
 }
-
