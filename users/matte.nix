@@ -1,4 +1,4 @@
-{ self, config, ... }:
+{ self, config, pkgs, ... }:
 let
   name = "Mattias Evensson";
   email = "mattias@evensson.eu";
@@ -56,6 +56,7 @@ in
     description = name;
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.fish;
     openssh.authorizedKeys.keyFiles = [ ./id_ed25519.pub ];
   };
 }

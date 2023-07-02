@@ -1,6 +1,10 @@
 {
   description = "My NixOS config";
 
+  nixConfig = {
+    extra-experimental-features = "nix-command flakes";
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -46,8 +50,11 @@
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/agenix.nix
               ./profiles/core/home-manager.nix
+              ./profiles/core/nixos.nix
+              ./profiles/core/ssh.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
+              ./profiles/shells/fish.nix
 
               ./users/matte.nix
             ];
@@ -61,8 +68,11 @@
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/agenix.nix
               ./profiles/core/home-manager.nix
+              ./profiles/core/nixos.nix
+              ./profiles/core/ssh.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
+              ./profiles/shells/fish.nix
 
               ./users/matte.nix
             ];
