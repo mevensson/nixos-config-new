@@ -29,7 +29,7 @@ jobs:
         with:
           name: mevensson-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-          extraPullNames: nrdxp,nix-community
+          extraPullNames: nix-community
 
       - name: Check Flake
         run: nix flake check --show-trace
