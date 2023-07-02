@@ -3,7 +3,7 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/7f5f422d-517d-408a-b536-2b92472bcf60";
     fsType = "btrfs";
-    options = ["subvol=@"];
+    options = [ "subvol=@" ];
   };
 
   fileSystems."/boot" = {
@@ -14,7 +14,7 @@
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/7f5f422d-517d-408a-b536-2b92472bcf60";
     fsType = "btrfs";
-    options = ["subvol=@home"];
+    options = [ "subvol=@home" ];
   };
 }
 

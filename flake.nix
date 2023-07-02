@@ -38,10 +38,11 @@
   //
   inputs.flake-utils.lib.eachDefaultSystem (system: {
     devShells = {
-      default = 
+      default =
         let
           pkgs = import inputs.nixpkgs {
             inherit system;
+            config.allowUnfree = true;
             overlays = [ inputs.devshell.overlays.default ];
           };
         in

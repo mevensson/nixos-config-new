@@ -1,8 +1,15 @@
 # https://numtide.github.io/devshell
-#[[commands]]
-#package = "devshell.hello"
+[[commands]]
+category = "formatting"
+package = "treefmt"
+
+[[commands]]
+category = "formatting"
+package = "nixpkgs-fmt"
+
+[[commands]]
+category = "formatting"
+package = "taplo"
 
 [devshell]
-packages = [
-  "go"
-]
+packages = ["rnix-lsp", "vscode"]
