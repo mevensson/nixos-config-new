@@ -1,0 +1,32 @@
+name: update-flake-lock
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+  # Run on Saturday 02:00 UTC
+  schedule:
+    - cron: "0 2 * * 6"
+
+jobs:
+  update-flake-lock:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v17
+
+      - name: Update flake.lock
+        id: update-flake-lock
+        uses: DeterminateSystems/update-flake-lock@v13
+        with:
+          token: ${{ secrets.UPDATE_FLAKE_LOCK }}
+
+      - name: Enable pull request automerge
+        uses: peter-evans/enable-pull-request-automerge@v2
+        if: ${{ steps.update-flake-lock.outputs.pull-request-number }}
+        with:
+          token: ${{ secrets.UPDATE_FLAKE_LOCK }}
+          pull-request-number: ${{ steps.update-flake-lock.outputs.pull-request-number }}

@@ -49,7 +49,7 @@
         "x86_64-linux"
       ];
 
-      perSystem = { pkgs, system, ... }: {
+      perSystem = { config, pkgs, system, ... }: {
         _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
@@ -70,6 +70,7 @@
           packages = [
             pkgs.rnix-lsp
             pkgs.vscode
+            config.treefmt.build.wrapper
           ];
         };
 
