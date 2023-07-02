@@ -73,6 +73,9 @@
               help = "Check the flake for errors.";
               command = "nix flake check";
             }
+            {
+              package = "gh";
+            }
           ];
           packages = [
             pkgs.rnix-lsp
