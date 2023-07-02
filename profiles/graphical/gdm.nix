@@ -2,16 +2,16 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  boot.plymouth.enable = true;
+  boot.plymouth.enable = false;
 
   services = {
     xserver = {
-      #enable = true;
-      #layout = "se";
+      enable = true;
+      layout = "se";
 
-      #libinput = {
-      #  enable = true;
-      #};
+      libinput = {
+        enable = true;
+      };
 
       displayManager.gdm = {
         enable = true;
