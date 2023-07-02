@@ -4,11 +4,27 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    agenix.url = "github:ryantm/agenix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    devshell.url = "github:numtide/devshell";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, ... } @inputs:
@@ -29,6 +45,7 @@
 
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/agenix.nix
+              ./profiles/core/home-manager.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
 
@@ -43,6 +60,7 @@
 
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/agenix.nix
+              ./profiles/core/home-manager.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
 
