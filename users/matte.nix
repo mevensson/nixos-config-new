@@ -14,6 +14,15 @@ in
     { lib
     , ...
     }: {
+      imports = [
+        ./profiles/graphical/firefox.nix
+        ./profiles/shell/direnv.nix
+        ./profiles/shell/fish.nix
+        ./profiles/shell/fzf.nix
+        ./profiles/shell/git.nix
+        ./profiles/shell/starship.nix
+      ];
+
       home = {
         activation.myActivationAction = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           mkdir -p ~/.ssh
