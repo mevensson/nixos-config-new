@@ -47,6 +47,7 @@
               ./profiles/core/agenix.nix
               ./profiles/core/auto-upgrade.nix
               ./profiles/core/home-manager.nix
+              ./profiles/core/locales.nix
               ./profiles/core/nixos.nix
               ./profiles/core/ssh.nix
               ./profiles/graphical/gdm.nix
@@ -66,6 +67,7 @@
               ./profiles/core/agenix.nix
               ./profiles/core/auto-upgrade.nix
               ./profiles/core/home-manager.nix
+              ./profiles/core/locales.nix
               ./profiles/core/nixos.nix
               ./profiles/core/ssh.nix
               ./profiles/graphical/gdm.nix
