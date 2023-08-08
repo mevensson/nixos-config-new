@@ -4,6 +4,7 @@
 
     extraConfig = {
       pull.rebase = false;
+      rebase.autosquash = true;
     };
 
     aliases = {
