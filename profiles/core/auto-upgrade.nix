@@ -2,8 +2,8 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:mevensson/nixos-config-new";
-    dates = "weekly";
+    dates = "hourly";
     persistent = true;
-    randomizedDelaySec = "20m";
+    randomizedDelaySec = "10m";
   };
 }
