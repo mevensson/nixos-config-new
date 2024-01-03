@@ -52,7 +52,7 @@ in
 
   users.users.matte = {
     uid = 1000;
-    passwordFile = config.age.secrets.matte_password.path;
+    hashedPasswordFile = config.age.secrets.matte_password.path;
     description = name;
     isNormalUser = true;
     extraGroups = [ "wheel" ];
