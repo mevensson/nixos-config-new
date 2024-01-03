@@ -54,6 +54,7 @@
               ./profiles/core/ssh.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
+              ./profiles/graphical/spotify.nix
               ./profiles/graphical/steam.nix
               ./profiles/shells/fish.nix
 
@@ -77,6 +78,7 @@
               ./profiles/core/ssh.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
+              ./profiles/graphical/spotify.nix
               ./profiles/graphical/steam.nix
               ./profiles/shells/fish.nix
 
