@@ -52,7 +52,7 @@
       window-resize-right-increase = [ "<Alt><Super>Right" ];
       window-resize-top-decrease = [ "<Shift><Alt><Super>Up" ];
       window-resize-top-increase = [ "<Alt><Super>Up" ];
-      window-toggle-alway-float = [ "<Shift><Super>f" ];
+      window-toggle-always-float = [ "<Shift><Super>f" ];
       window-toggle-float = [ "<Super>f" ];
     };
   };
