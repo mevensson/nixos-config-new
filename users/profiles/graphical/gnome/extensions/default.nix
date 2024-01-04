@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./blur-my-shell.nix
     ./espresso.nix
     ./extension-list.nix
     ./forge.nix
@@ -13,6 +14,7 @@
   dconf.settings = {
     "org/gnome/shell" = {
       enabled-extensions = [
+        "blur-my-shell@aunetx"
         "espresso@coadmunkee.github.com"
         "extension-list@tu.berry"
         "forge@jmmaranan.com"
