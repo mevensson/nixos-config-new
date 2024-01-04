@@ -6,8 +6,7 @@
   ];
 
   dconf.settings = {
-    "org/gnome/mutter/keybindings" = {
-      maximize = [ ];
+    "org/gnome/desktop/wm/keybindings" = {
       move-to-monitor-down = [ ];
       move-to-monitor-left = [ ];
       move-to-monitor-right = [ ];
@@ -18,6 +17,10 @@
       switch-to-workspace-right = [ "<Control><Super>Right" ];
       toggle-tiled-left = [ ];
       toggle-tiled-right = [ ];
+    };
+
+    "org/gnome/mutter/keybindings" = {
+      maximize = [ ];
       unmaximize = [ ];
     };
 
@@ -49,7 +52,7 @@
       window-resize-right-increase = [ "<Alt><Super>Right" ];
       window-resize-top-decrease = [ "<Shift><Alt><Super>Up" ];
       window-resize-top-increase = [ "<Alt><Super>Up" ];
-      window-toggle-alway-float = [ "<Shift><Super>f" ];
+      window-toggle-always-float = [ "<Shift><Super>f" ];
       window-toggle-float = [ "<Super>f" ];
     };
   };
