@@ -4,6 +4,7 @@
   imports = [
     ./forge.nix
     ./tray-icons-reloaded.nix
+    ./vitals.nix
   ];
 
   dconf.settings = {
@@ -11,6 +12,7 @@
       enabled-extensions = [
         "forge@jmmaranan.com"
         "trayIconsReloaded@selfmade.pl"
+        "Vitals@CoreCoding.com"
       ];
     };
   };
