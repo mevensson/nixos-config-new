@@ -16,6 +16,7 @@ in
     }: {
       imports = [
         ./profiles/graphical/firefox.nix
+        ./profiles/graphical/gnome/default.nix
         ./profiles/shell/direnv.nix
         ./profiles/shell/fish.nix
         ./profiles/shell/fzf.nix
