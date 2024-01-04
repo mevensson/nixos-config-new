@@ -3,6 +3,7 @@
 {
   imports = [
     ./extensions/default.nix
+    ./variety/default.nix
   ];
 
   dconf.settings = {
