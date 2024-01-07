@@ -7,6 +7,7 @@
 
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
+      maximize = [ ];
       move-to-monitor-down = [ ];
       move-to-monitor-left = [ ];
       move-to-monitor-right = [ ];
@@ -15,13 +16,12 @@
       move-to-workspace-right = [ "<Shift><Control><Super>Right" ];
       switch-to-workspace-left = [ "<Control><Super>Left" ];
       switch-to-workspace-right = [ "<Control><Super>Right" ];
-      toggle-tiled-left = [ ];
-      toggle-tiled-right = [ ];
+      unmaximize = [ ];
     };
 
     "org/gnome/mutter/keybindings" = {
-      maximize = [ ];
-      unmaximize = [ ];
+      toggle-tiled-left = [ ];
+      toggle-tiled-right = [ ];
     };
 
     "org/gnome/shell/extensions/forge" = {
