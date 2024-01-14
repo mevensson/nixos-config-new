@@ -1,13 +1,10 @@
 { self, config, pkgs, ... }:
 let
-  name = "Mattias Evensson";
-  email = "mattias@evensson.eu";
+  name = "Test User";
 in
 {
   age.secrets = {
-    matte_password.file = "${self}/secrets/matte_password.age";
-    matte_id_ed25519.file = "${self}/secrets/matte_id_ed25519.age";
-    matte_id_ed25519.owner = "matte";
+    test_password.file = "${self}/secrets/test_password.age";
   };
 
   home-manager.users.matte =
@@ -17,25 +14,13 @@ in
       imports = [
         ./profiles/graphical/firefox.nix
         ./profiles/graphical/gnome/default.nix
-        ./profiles/graphical/gnome/variety/default.nix
-        ./profiles/graphical/gnome/variety/bing.nix
         ./profiles/shell/direnv.nix
         ./profiles/shell/fish.nix
         ./profiles/shell/fzf.nix
-        ./profiles/shell/git.nix
         ./profiles/shell/starship.nix
       ];
 
       home = {
-        activation.myActivationAction = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          mkdir -p ~/.ssh
-          ln -sf /run/agenix/matte_id_ed25519 ~/.ssh/id_ed25519
-        '';
-
-        file = {
-          ".ssh/id_ed25519.pub".source = ./id_ed25519.pub;
-        };
-
         # This value determines the Home Manager release that your
         # configuration is compatible with. This helps avoid breakage
         # when a new Home Manager release introduces backwards
@@ -46,20 +31,14 @@ in
         # changes in each release.
         stateVersion = "22.05";
       };
-
-      programs.git = {
-        userName = name;
-        userEmail = email;
-      };
     };
 
-  users.users.matte = {
-    uid = 1000;
-    hashedPasswordFile = config.age.secrets.matte_password.path;
+  users.users.test = {
+    uid = 1001;
+    hashedPasswordFile = config.age.secrets.test_password.path;
     description = name;
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     shell = pkgs.fish;
-    openssh.authorizedKeys.keyFiles = [ ./id_ed25519.pub ];
   };
 }
