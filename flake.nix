@@ -60,6 +60,7 @@
               ./profiles/shells/fish.nix
 
               ./users/matte.nix
+              ./users/test.nix
             ];
           };
           t14g1 = inputs.nixpkgs.lib.nixosSystem {
