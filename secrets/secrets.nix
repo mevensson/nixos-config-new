@@ -9,4 +9,5 @@ in
 {
   "matte_password.age".publicKeys = allKeys;
   "matte_id_ed25519.age".publicKeys = allKeys;
+  "test_password.age".publicKeys = allKeys;
 }
