@@ -7,7 +7,7 @@ in
     test_password.file = "${self}/secrets/test_password.age";
   };
 
-  home-manager.users.matte =
+  home-manager.users.test =
     { lib
     , ...
     }: {
