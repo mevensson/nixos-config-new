@@ -57,6 +57,7 @@
               ./profiles/graphical/gsconnect.nix
               ./profiles/graphical/spotify.nix
               ./profiles/graphical/steam.nix
+              ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
 
               ./users/matte.nix
@@ -83,6 +84,7 @@
               ./profiles/graphical/gsconnect.nix
               ./profiles/graphical/spotify.nix
               ./profiles/graphical/steam.nix
+              ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
 
               ./users/matte.nix
