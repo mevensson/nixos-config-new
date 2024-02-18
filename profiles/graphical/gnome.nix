@@ -4,6 +4,8 @@
 
     firmware-updater
     gnome-firmware
+
+    celluloid
   ];
 
   services = {
