@@ -7,7 +7,10 @@
   services = {
     xserver = {
       enable = true;
-      layout = "se";
+
+      xkb = {
+        layout = "se";
+      };
 
       libinput = {
         enable = true;
