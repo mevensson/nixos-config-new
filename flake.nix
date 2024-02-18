@@ -52,6 +52,7 @@
               ./profiles/core/locales.nix
               ./profiles/core/nixos.nix
               ./profiles/core/ssh.nix
+              ./profiles/graphical/discord.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
               ./profiles/graphical/gsconnect.nix
@@ -79,6 +80,7 @@
               ./profiles/core/locales.nix
               ./profiles/core/nixos.nix
               ./profiles/core/ssh.nix
+              ./profiles/graphical/discord.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
               ./profiles/graphical/gsconnect.nix
