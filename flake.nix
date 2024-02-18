@@ -9,17 +9,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -50,6 +53,7 @@
               ./profiles/core/home-manager.nix
               ./profiles/core/kernel.nix
               ./profiles/core/locales.nix
+              ./profiles/core/nix-index.nix
               ./profiles/core/nixos.nix
               ./profiles/core/ssh.nix
               ./profiles/graphical/discord.nix
@@ -78,6 +82,7 @@
               ./profiles/core/home-manager.nix
               ./profiles/core/kernel.nix
               ./profiles/core/locales.nix
+              ./profiles/core/nix-index.nix
               ./profiles/core/nixos.nix
               ./profiles/core/ssh.nix
               ./profiles/graphical/discord.nix
