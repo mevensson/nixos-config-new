@@ -126,7 +126,6 @@
             }
           ];
           packages = [
-            pkgs.rnix-lsp
             pkgs.vscode
             config.treefmt.build.wrapper
             inputs.agenix.packages.${system}.default
