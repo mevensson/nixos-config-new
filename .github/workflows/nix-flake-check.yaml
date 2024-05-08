@@ -19,13 +19,13 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v22
+        uses: cachix/install-nix-action@v26
 
       - name: Configure Cachix caches
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v14
         with:
           name: mevensson-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
