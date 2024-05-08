@@ -5,15 +5,15 @@
   boot.plymouth.enable = false;
 
   services = {
+    libinput = {
+      enable = true;
+    };
+
     xserver = {
       enable = true;
 
       xkb = {
         layout = "se";
-      };
-
-      libinput = {
-        enable = true;
       };
 
       displayManager.gdm = {
