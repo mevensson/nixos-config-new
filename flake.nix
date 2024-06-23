@@ -55,6 +55,7 @@
               ./profiles/core/locales.nix
               ./profiles/core/nix-index.nix
               ./profiles/core/nixos.nix
+              ./profiles/core/printing.nix
               ./profiles/core/ssh.nix
               ./profiles/graphical/discord.nix
               ./profiles/graphical/gdm.nix
@@ -85,6 +86,7 @@
               ./profiles/core/locales.nix
               ./profiles/core/nix-index.nix
               ./profiles/core/nixos.nix
+              ./profiles/core/printing.nix
               ./profiles/core/ssh.nix
               ./profiles/graphical/discord.nix
               ./profiles/graphical/gdm.nix
