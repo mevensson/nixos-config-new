@@ -17,6 +17,7 @@ in
       imports = [
         ./profiles/graphical/firefox.nix
         ./profiles/graphical/gnome/default.nix
+        ./profiles/graphical/gnome/extensions/forge.nix
         ./profiles/graphical/gnome/variety/default.nix
         ./profiles/graphical/gnome/variety/bing.nix
         ./profiles/shell/direnv.nix
