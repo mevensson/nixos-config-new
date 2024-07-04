@@ -6,22 +6,10 @@
   ];
 
   dconf.settings = {
-    "org/gnome/desktop/wm/keybindings" = {
-      maximize = [ ];
-      move-to-monitor-down = [ ];
-      move-to-monitor-left = [ ];
-      move-to-monitor-right = [ ];
-      move-to-monitor-up = [ ];
-      move-to-workspace-left = [ "<Shift><Control><Super>Left" ];
-      move-to-workspace-right = [ "<Shift><Control><Super>Right" ];
-      switch-to-workspace-left = [ "<Control><Super>Left" ];
-      switch-to-workspace-right = [ "<Control><Super>Right" ];
-      unmaximize = [ ];
-    };
-
-    "org/gnome/mutter/keybindings" = {
-      toggle-tiled-left = [ ];
-      toggle-tiled-right = [ ];
+    "org/gnome/shell" = {
+      enabled-extensions = [
+        "forge@jmmaranan.com"
+      ];
     };
 
     "org/gnome/shell/extensions/forge" = {
@@ -54,6 +42,24 @@
       window-resize-top-increase = [ "<Alt><Super>Up" ];
       window-toggle-always-float = [ "<Shift><Super>f" ];
       window-toggle-float = [ "<Super>f" ];
+    };
+
+    "org/gnome/desktop/wm/keybindings" = {
+      maximize = [ ];
+      move-to-monitor-down = [ ];
+      move-to-monitor-left = [ ];
+      move-to-monitor-right = [ ];
+      move-to-monitor-up = [ ];
+      move-to-workspace-left = [ "<Shift><Control><Super>Left" ];
+      move-to-workspace-right = [ "<Shift><Control><Super>Right" ];
+      switch-to-workspace-left = [ "<Control><Super>Left" ];
+      switch-to-workspace-right = [ "<Control><Super>Right" ];
+      unmaximize = [ ];
+    };
+
+    "org/gnome/mutter/keybindings" = {
+      toggle-tiled-left = [ ];
+      toggle-tiled-right = [ ];
     };
   };
 }
