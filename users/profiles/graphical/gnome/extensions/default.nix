@@ -6,7 +6,6 @@
     ./blur-my-shell.nix
     ./espresso.nix
     ./extension-list.nix
-    ./gsconnect.nix
     ./vitals.nix
   ];
 
