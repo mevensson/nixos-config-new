@@ -63,6 +63,7 @@
               ./profiles/core/printing.nix
               ./profiles/core/ssh.nix
               ./profiles/graphical/discord.nix
+              ./profiles/graphical/gamescope-steam-session.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
               ./profiles/graphical/kde.nix
@@ -94,6 +95,7 @@
               ./profiles/core/printing.nix
               ./profiles/core/ssh.nix
               ./profiles/graphical/discord.nix
+              ./profiles/graphical/gamescope-steam-session.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
               ./profiles/graphical/libreoffice.nix
