@@ -37,6 +37,7 @@
       dynamic-workspaces = true;
       experimental-features = [
         "scale-monitor-framebuffer"
+        "variable-refresh-rate"
       ];
     };
 
