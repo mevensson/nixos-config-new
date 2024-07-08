@@ -3,6 +3,11 @@
     pkgs.mangohud
   ];
 
+  hardware = {
+    xone.enable = true;
+    xpadneo.enable = true;
+  };
+
   programs = {
     gamescope = {
       enable = true;
