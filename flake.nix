@@ -72,6 +72,7 @@
               ./profiles/graphical/steam.nix
               ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
+              ./profiles/sound/pipewire.nix
 
               ./users/matte.nix
               ./users/test.nix
@@ -104,6 +105,7 @@
               ./profiles/graphical/steam.nix
               ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
+              ./profiles/sound/pipewire.nix
 
               ./users/matte.nix
             ];
@@ -132,6 +134,7 @@
               ./profiles/graphical/steam.nix
               ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
+              ./profiles/sound/pipewire.nix
 
               ./users/matte.nix
             ];

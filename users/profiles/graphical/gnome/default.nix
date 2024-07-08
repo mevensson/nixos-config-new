@@ -10,7 +10,7 @@
       color-scheme = "prefer-dark";
     };
 
-    "/org/gnome/desktop/interface" = {
+    "org/gnome/desktop/interface" = {
       cursor-theme = "Adwaita";
       icon-theme = "Adwaita";
       gtk-theme = "Adwaita";
@@ -25,7 +25,7 @@
       text-scaling-factor = "1.0";
     };
 
-    "/org/gnome/desktop/sound" = {
+    "org/gnome/desktop/sound" = {
       theme-name = "freedesktop";
     };
 
