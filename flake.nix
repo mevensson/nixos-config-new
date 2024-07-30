@@ -57,6 +57,7 @@
               ./profiles/core/auto-upgrade.nix
               ./profiles/core/fwupd.nix
               ./profiles/core/home-manager.nix
+              ./profiles/core/immutable-users.nix
               ./profiles/core/kernel.nix
               ./profiles/core/locales.nix
               ./profiles/core/nix-index.nix
@@ -91,6 +92,7 @@
               ./profiles/core/auto-upgrade.nix
               ./profiles/core/fwupd.nix
               ./profiles/core/home-manager.nix
+              ./profiles/core/immutable-users.nix
               ./profiles/core/kernel.nix
               ./profiles/core/locales.nix
               ./profiles/core/nix-index.nix
@@ -123,6 +125,7 @@
               ./profiles/core/auto-upgrade.nix
               ./profiles/core/fwupd.nix
               ./profiles/core/home-manager.nix
+              ./profiles/core/immutable-users.nix
               ./profiles/core/kernel.nix
               ./profiles/core/locales.nix
               ./profiles/core/nix-index.nix
