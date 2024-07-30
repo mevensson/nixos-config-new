@@ -52,17 +52,7 @@
               ./hosts/ryzen/configuration.nix
 
               ./profiles/boot/systemd-boot.nix
-              ./profiles/core/agenix.nix
-              ./profiles/core/auto-gc.nix
-              ./profiles/core/auto-upgrade.nix
-              ./profiles/core/fwupd.nix
-              ./profiles/core/home-manager.nix
-              ./profiles/core/kernel.nix
-              ./profiles/core/locales.nix
-              ./profiles/core/nix-index.nix
-              ./profiles/core/nixos.nix
-              ./profiles/core/printing.nix
-              ./profiles/core/ssh.nix
+              ./profiles/core/default.nix
               ./profiles/graphical/discord.nix
               ./profiles/graphical/gamescope-steam-session.nix
               ./profiles/graphical/gdm.nix
@@ -86,17 +76,7 @@
               ./hosts/t14g1/configuration.nix
 
               ./profiles/boot/systemd-boot.nix
-              ./profiles/core/agenix.nix
-              ./profiles/core/auto-gc.nix
-              ./profiles/core/auto-upgrade.nix
-              ./profiles/core/fwupd.nix
-              ./profiles/core/home-manager.nix
-              ./profiles/core/kernel.nix
-              ./profiles/core/locales.nix
-              ./profiles/core/nix-index.nix
-              ./profiles/core/nixos.nix
-              ./profiles/core/printing.nix
-              ./profiles/core/ssh.nix
+              ./profiles/core/default.nix
               ./profiles/graphical/discord.nix
               ./profiles/graphical/gamescope-steam-session.nix
               ./profiles/graphical/gdm.nix
@@ -119,16 +99,7 @@
               ./hosts/game/configuration.nix
 
               ./profiles/boot/systemd-boot.nix
-              ./profiles/core/agenix.nix
-              ./profiles/core/auto-upgrade.nix
-              ./profiles/core/fwupd.nix
-              ./profiles/core/home-manager.nix
-              ./profiles/core/kernel.nix
-              ./profiles/core/locales.nix
-              ./profiles/core/nix-index.nix
-              ./profiles/core/nixos.nix
-              ./profiles/core/printing.nix
-              ./profiles/core/ssh.nix
+              ./profiles/core/default.nix
               ./profiles/graphical/discord.nix
               ./profiles/graphical/gamescope-steam-session.nix
               ./profiles/graphical/gdm.nix
