@@ -20,6 +20,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -101,10 +105,11 @@
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/default.nix
               ./profiles/graphical/discord.nix
-              ./profiles/graphical/gamescope-steam-session.nix
+              #./profiles/graphical/gamescope-steam-session.nix
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
-              ./profiles/graphical/steam.nix
+              ./profiles/graphical/jovian.nix
+              #./profiles/graphical/steam.nix
               ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
               ./profiles/sound/pipewire.nix
