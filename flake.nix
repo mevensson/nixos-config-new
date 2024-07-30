@@ -1,6 +1,15 @@
 {
   description = "My NixOS config";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://mevensson-nixos-config.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "mevensson-nixos-config.cachix.org-1:nTyMdA8pqMkgk0Amny05+p3ujTE90BTilJPMwceHSEQ="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
