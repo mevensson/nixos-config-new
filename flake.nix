@@ -144,19 +144,31 @@
           config.allowUnfree = true;
         };
 
-        packages = {
-          cachix-deploy-spec =
-            let
-              cachix-deploy-lib = inputs.cachix-deploy.lib pkgs;
-            in
-            cachix-deploy-lib.spec {
-              agents = {
-                ryzen = self.nixosConfigurations.ryzen.config.system.build.toplevel;
-                t14g1 = self.nixosConfigurations.t14g1.config.system.build.toplevel;
-                game = self.nixosConfigurations.game.config.system.build.toplevel;
+        packages =
+          let
+            cachix-deploy-lib = inputs.cachix-deploy.lib pkgs;
+            getDerivation = system: inputs.self.nixosConfigurations.${system}.config.system.build.toplevel;
+          in
+          {
+            cachix-deploy-ryzen =
+              cachix-deploy-lib.spec {
+                agents = {
+                  ryzen = getDerivation "ryzen";
+                };
               };
-            };
-        };
+            cachix-deploy-t14g1 =
+              cachix-deploy-lib.spec {
+                agents = {
+                  t14g1 = getDerivation "t14g1";
+                };
+              };
+            cachix-deploy-game =
+              cachix-deploy-lib.spec {
+                agents = {
+                  game = getDerivation "game";
+                };
+              };
+          };
 
         devshells.default = {
           commands = [
