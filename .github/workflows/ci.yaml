@@ -1,0 +1,149 @@
+name: ci
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v26
+
+      - name: Configure Cachix caches
+        uses: cachix/cachix-action@v14
+        with:
+          name: mevensson-nixos-config
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          extraPullNames: nix-community
+
+      - name: Check Flake
+        run: nix flake check --show-trace
+
+  build-ryzen:
+    runs-on: ubuntu-latest
+    needs: [ check ]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v26
+
+      - name: Configure Cachix caches
+        uses: cachix/cachix-action@v14
+        with:
+          name: mevensson-nixos-config
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          extraPullNames: nix-community
+
+      - name: Build Cachix Deploy
+        run: |
+          nix build .#cachix-deploy-ryzen
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        env:
+          CACHIX_ACTIVATE_TOKEN: "${{ secrets.CACHIX_ACTIVATE_TOKEN }}"
+        run: |
+          cachix push mevensson-nixos-config ./result
+          cachix deploy activate --async ./result
+
+  build-t14g1:
+    runs-on: ubuntu-latest
+    needs: [ check ]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v26
+
+      - name: Configure Cachix caches
+        uses: cachix/cachix-action@v14
+        with:
+          name: mevensson-nixos-config
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          extraPullNames: nix-community
+
+      - name: Build Cachix Deploy
+        run: |
+          nix build .#cachix-deploy-t14g1
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        env:
+          CACHIX_ACTIVATE_TOKEN: "${{ secrets.CACHIX_ACTIVATE_TOKEN }}"
+        run: |
+          cachix push mevensson-nixos-config ./result
+          cachix deploy activate --async ./result
+
+  build-game:
+    runs-on: ubuntu-latest
+    needs: [ check ]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v26
+
+      - name: Configure Cachix caches
+        uses: cachix/cachix-action@v14
+        with:
+          name: mevensson-nixos-config
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          extraPullNames: nix-community
+
+      - name: Build Cachix Deploy
+        run: |
+          nix build .#cachix-deploy-game
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        env:
+          CACHIX_ACTIVATE_TOKEN: "${{ secrets.CACHIX_ACTIVATE_TOKEN }}"
+        run: |
+          cachix push mevensson-nixos-config ./result
+          cachix deploy activate --async ./result
+
+  done:
+    runs-on: ubuntu-latest
+    needs:
+    - build-ryzen
+    - build-t14g1
+    - build-game
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v26
+
+      - name: Configure Cachix caches
+        uses: cachix/cachix-action@v14
+        with:
+          name: mevensson-nixos-config
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          extraPullNames: nix-community
+
+      - name: Show Flake
+        run: nix flake show
