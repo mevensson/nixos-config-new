@@ -173,6 +173,9 @@
             {
               package = "gh";
             }
+            {
+              package = "cachix";
+            }
           ];
           packages = [
             pkgs.vscode
