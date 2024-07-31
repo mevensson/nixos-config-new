@@ -18,6 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    cachix-deploy = {
+      url = "github:cachix/cachix-deploy-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -138,6 +143,21 @@
           inherit system;
           config.allowUnfree = true;
         };
+
+        packages = {
+          cachix-deploy-spec =
+            let
+              cachix-deploy-lib = inputs.cachix-deploy.lib pkgs;
+            in
+            cachix-deploy-lib.spec {
+              agents = {
+                ryzen = self.nixosConfigurations.ryzen.config.system.build.toplevel;
+                t14g1 = self.nixosConfigurations.t14g1.config.system.build.toplevel;
+                game = self.nixosConfigurations.game.config.system.build.toplevel;
+              };
+            };
+        };
+
         devshells.default = {
           commands = [
             {
