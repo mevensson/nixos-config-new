@@ -4,6 +4,7 @@
     ./auto-gc.nix
     ./auto-upgrade.nix
     ./cachix.nix
+    ./cachix-deploy.nix
     ./fwupd.nix
     ./home-manager.nix
     ./immutable-users.nix
