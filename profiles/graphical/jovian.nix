@@ -6,6 +6,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  hardware = {
+    xone.enable = true;
+    xpadneo.enable = true;
+  };
+
   # Jovian NixOS options, specific to the deck
   jovian = {
     steam = {
