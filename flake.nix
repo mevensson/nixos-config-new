@@ -118,12 +118,8 @@
 
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/default.nix
-              ./profiles/graphical/discord.nix
-              #./profiles/graphical/gamescope-steam-session.nix
-              ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
               ./profiles/graphical/jovian.nix
-              #./profiles/graphical/steam.nix
               ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
               ./profiles/sound/pipewire.nix

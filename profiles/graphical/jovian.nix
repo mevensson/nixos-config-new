@@ -15,9 +15,9 @@
   jovian = {
     steam = {
       enable = true;
-      #autoStart = true;
-      #user = "${username}";
-      #desktopSession = "gnome";
+      autoStart = true;
+      user = "matte";
+      desktopSession = "gnome";
     };
     devices = {
       steamdeck = {
