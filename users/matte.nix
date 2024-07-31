@@ -55,6 +55,12 @@ in
       };
     };
 
+  nix.settings = {
+    trusted-users = [
+      "matte"
+    ];
+  };
+
   users.users.matte = {
     uid = 1000;
     hashedPasswordFile = config.age.secrets.matte_password.path;
