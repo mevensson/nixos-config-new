@@ -21,11 +21,11 @@
     };
     devices = {
       steamdeck = {
-        #enable = true;
+        enable = false;
       };
     };
     decky-loader = {
-      #enable = true;
+      enable = false;
     };
   };
 }
