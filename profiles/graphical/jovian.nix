@@ -6,21 +6,26 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  hardware = {
+    xone.enable = true;
+    xpadneo.enable = true;
+  };
+
   # Jovian NixOS options, specific to the deck
   jovian = {
     steam = {
       enable = true;
-      #autoStart = true;
-      #user = "${username}";
-      #desktopSession = "gnome";
+      autoStart = true;
+      user = "matte";
+      desktopSession = "gnome";
     };
     devices = {
       steamdeck = {
-        #enable = true;
+        enable = false;
       };
     };
     decky-loader = {
-      #enable = true;
+      enable = false;
     };
   };
 }
