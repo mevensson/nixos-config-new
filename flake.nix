@@ -4,9 +4,11 @@
   nixConfig = {
     extra-substituters = [
       "https://mevensson-nixos-config.cachix.org"
+      "https://nyx.chaotic.cx/"
     ];
     extra-trusted-public-keys = [
       "mevensson-nixos-config.cachix.org-1:nTyMdA8pqMkgk0Amny05+p3ujTE90BTilJPMwceHSEQ="
+      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
     ];
   };
 
@@ -22,6 +24,12 @@
       url = "github:cachix/cachix-deploy-flake";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+    };
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.jovian.follows = "jovian";
     };
     devshell = {
       url = "github:numtide/devshell";
