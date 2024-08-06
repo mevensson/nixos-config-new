@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v26
+        uses: cachix/install-nix-action@v27
 
       - name: Configure Cachix caches
         uses: cachix/cachix-action@v14
@@ -52,7 +52,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v26
+        uses: cachix/install-nix-action@v27
 
       - name: Configure Cachix caches
         uses: cachix/cachix-action@v14
@@ -97,7 +97,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v26
+        uses: cachix/install-nix-action@v27
 
       - name: Configure Cachix caches
         uses: cachix/cachix-action@v14
@@ -142,7 +142,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v26
+        uses: cachix/install-nix-action@v27
 
       - name: Configure Cachix caches
         uses: cachix/cachix-action@v14
@@ -181,7 +181,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v26
+        uses: cachix/install-nix-action@v27
 
       - name: Configure Cachix caches
         uses: cachix/cachix-action@v14
