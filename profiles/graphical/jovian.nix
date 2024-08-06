@@ -1,7 +1,8 @@
-{ jovian, ... }:
+{ jovian, chaotic, ... }:
 {
   imports = [
     jovian.nixosModules.default
+    chaotic.nixosModules.default
   ];
 
   nixpkgs.config.allowUnfree = true;
