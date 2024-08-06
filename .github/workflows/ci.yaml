@@ -39,6 +39,15 @@ jobs:
     needs: [ check ]
 
     steps:
+      - name: Free Disk Space
+        uses: endersonmenezes/free-disk-space@v2
+        with:
+          remove_android: false
+          remove_dotnet: true
+          remove_haskell: true
+          remove_tool_cache: true
+          remove_swap: false
+
       - name: Check out repository
         uses: actions/checkout@v4
 
@@ -51,6 +60,9 @@ jobs:
           name: mevensson-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
           extraPullNames: nix-community
+
+      - name: Check Free Disk
+        run: df -H
 
       - name: Build Cachix Deploy
         run: |
@@ -64,11 +76,23 @@ jobs:
           cachix push mevensson-nixos-config ./result
           cachix deploy activate --async ./result
 
+      - name: Check Free Disk
+        run: df -H
+
   build-t14g1:
     runs-on: ubuntu-latest
     needs: [ check ]
 
     steps:
+      - name: Free Disk Space
+        uses: endersonmenezes/free-disk-space@v2
+        with:
+          remove_android: false
+          remove_dotnet: true
+          remove_haskell: true
+          remove_tool_cache: true
+          remove_swap: false
+
       - name: Check out repository
         uses: actions/checkout@v4
 
@@ -81,6 +105,9 @@ jobs:
           name: mevensson-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
           extraPullNames: nix-community
+
+      - name: Check Free Disk
+        run: df -H
 
       - name: Build Cachix Deploy
         run: |
@@ -94,11 +121,23 @@ jobs:
           cachix push mevensson-nixos-config ./result
           cachix deploy activate --async ./result
 
+      - name: Check Free Disk
+        run: df -H
+
   build-game:
     runs-on: ubuntu-latest
     needs: [ check ]
 
     steps:
+      - name: Free Disk Space
+        uses: endersonmenezes/free-disk-space@v2
+        with:
+          remove_android: false
+          remove_dotnet: true
+          remove_haskell: true
+          remove_tool_cache: true
+          remove_swap: false
+
       - name: Check out repository
         uses: actions/checkout@v4
 
@@ -112,6 +151,9 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
           extraPullNames: nix-community
 
+      - name: Check Free Disk
+        run: df -H
+
       - name: Build Cachix Deploy
         run: |
           nix build .#cachix-deploy-game
@@ -123,6 +165,9 @@ jobs:
         run: |
           cachix push mevensson-nixos-config ./result
           cachix deploy activate --async ./result
+
+      - name: Check Free Disk
+        run: df -H
 
   done:
     runs-on: ubuntu-latest
