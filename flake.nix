@@ -86,6 +86,7 @@
               ./profiles/graphical/libreoffice.nix
               ./profiles/graphical/spotify.nix
               ./profiles/graphical/steam.nix
+              ./profiles/remotefs/sshfs/ds920.nix
               ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
               ./profiles/sound/pipewire.nix
@@ -109,6 +110,7 @@
               ./profiles/graphical/libreoffice.nix
               ./profiles/graphical/spotify.nix
               ./profiles/graphical/steam.nix
+              ./profiles/remotefs/sshfs/ds920.nix
               ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
               ./profiles/sound/pipewire.nix
@@ -126,6 +128,7 @@
               ./profiles/core/default.nix
               ./profiles/graphical/gnome.nix
               ./profiles/graphical/jovian.nix
+              ./profiles/remotefs/sshfs/ds920.nix
               ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
               ./profiles/sound/pipewire.nix
