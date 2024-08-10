@@ -21,6 +21,7 @@ in
         ./profiles/graphical/gnome/variety/default.nix
         ./profiles/graphical/gnome/variety/bing.nix
         ./profiles/graphical/kde/default.nix
+        ./profiles/programming/vscode/default.nix
         ./profiles/shell/direnv.nix
         ./profiles/shell/fish.nix
         ./profiles/shell/fzf.nix
