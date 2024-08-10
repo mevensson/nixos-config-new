@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "jnoortheen.nix-ide",
+        "mkhl.direnv",
         "redhat.vscode-yaml"
     ]
 }
