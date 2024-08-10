@@ -1,5 +1,6 @@
 {
   imports = [
+    ./user-settings.nix
     ./extensions/jnoortheen.nix-ide.nix
     ./extensions/redhat.vscode-yaml.nix
   ];
