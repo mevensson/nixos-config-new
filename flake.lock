@@ -28,7 +28,9 @@
     "cachix-deploy": {
       "inputs": {
         "darwin": "darwin_2",
-        "disko": "disko",
+        "disko": [
+          "disko"
+        ],
         "home-manager": [
           "home-manager"
         ],
@@ -117,7 +119,6 @@
     "disko": {
       "inputs": {
         "nixpkgs": [
-          "cachix-deploy",
           "nixpkgs"
         ]
       },
@@ -403,6 +404,7 @@
         "agenix": "agenix",
         "cachix-deploy": "cachix-deploy",
         "devshell": "devshell",
+        "disko": "disko",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
