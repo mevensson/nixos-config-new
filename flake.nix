@@ -23,6 +23,7 @@
     cachix-deploy = {
       url = "github:cachix/cachix-deploy-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.disko.follows = "disko";
       inputs.home-manager.follows = "home-manager";
     };
     chaotic = {
@@ -33,6 +34,10 @@
     };
     devshell = {
       url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {

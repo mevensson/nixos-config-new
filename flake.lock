@@ -28,7 +28,9 @@
     "cachix-deploy": {
       "inputs": {
         "darwin": "darwin_2",
-        "disko": "disko",
+        "disko": [
+          "disko"
+        ],
         "home-manager": [
           "home-manager"
         ],
@@ -163,16 +165,15 @@
     "disko": {
       "inputs": {
         "nixpkgs": [
-          "cachix-deploy",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1715822638,
-        "narHash": "sha256-Z4ZoyK8jYRmBZwMaEZLEmAilrfdpekwwwohliqC14/E=",
+        "lastModified": 1725377834,
+        "narHash": "sha256-tqoAO8oT6zEUDXte98cvA1saU9+1dLJQe3pMKLXv8ps=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "476eef8d85aa09389ae7baf6e6b60357f6a01432",
+        "rev": "e55f9a8678adc02024a4877c2a403e3f6daf24fe",
         "type": "github"
       },
       "original": {
@@ -469,6 +470,7 @@
         "cachix-deploy": "cachix-deploy",
         "chaotic": "chaotic",
         "devshell": "devshell",
+        "disko": "disko",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",
         "jovian": "jovian",
