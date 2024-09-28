@@ -84,6 +84,7 @@
               ./profiles/graphical/gdm.nix
               ./profiles/graphical/gnome.nix
               ./profiles/graphical/libreoffice.nix
+              ./profiles/graphical/logitechg29.nix
               ./profiles/graphical/spotify.nix
               ./profiles/graphical/steam.nix
               ./profiles/remotefs/sshfs/ds920.nix
