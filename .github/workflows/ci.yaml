@@ -192,4 +192,4 @@ jobs:
           extraPullNames: nix-community
 
       - name: Show Flake
-        run: nix flake show
+        run: nix flake show --allow-import-from-derivation
