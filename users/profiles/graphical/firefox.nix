@@ -1,9 +1,13 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   programs.firefox = {
     enable = true;
 
-    enableGnomeExtensions = true;
+    package = pkgs.firefox.override {
+      nativeMessagingHosts = [
+        pkgs.gnome-browser-connector
+      ];
+    };
 
     policies = {
       DisablePocket = true;
@@ -21,7 +25,7 @@
         extensions = with config.nur.repos.rycee.firefox-addons; [
           lastpass-password-manager
           ublock-origin
-        ]; 
+        ];
         settings = {
           "services.sync.engine.addons" = false;
           "services.sync.engine.addresses" = false;
