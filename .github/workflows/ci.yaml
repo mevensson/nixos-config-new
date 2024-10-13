@@ -171,6 +171,7 @@ jobs:
 
   done:
     runs-on: ubuntu-latest
+    if: success()
     needs:
     - build-ryzen
     - build-t14g1
