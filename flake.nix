@@ -50,6 +50,9 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+    };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
