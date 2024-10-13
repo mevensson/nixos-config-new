@@ -10,6 +10,7 @@
     ./kernel.nix
     ./locales.nix
     ./nix-index.nix
+    ./nur.nix
     ./nixos.nix
     ./printing.nix
     ./ssh.nix
