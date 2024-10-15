@@ -80,6 +80,7 @@
 
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/default.nix
+              ./profiles/core/cachix-deploy.nix
               ./profiles/graphical/discord.nix
               ./profiles/graphical/gamescope-steam-session.nix
               ./profiles/graphical/gdm.nix
@@ -106,6 +107,7 @@
 
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/default.nix
+              ./profiles/core/cachix-deploy.nix
               ./profiles/graphical/discord.nix
               ./profiles/graphical/gamescope-steam-session.nix
               ./profiles/graphical/gdm.nix
@@ -129,6 +131,7 @@
 
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/default.nix
+              ./profiles/core/cachix-deploy.nix
               ./profiles/graphical/gnome.nix
               ./profiles/remotefs/sshfs/ds920.nix
               ./profiles/shells/core.nix
@@ -136,6 +139,13 @@
               ./profiles/sound/pipewire.nix
 
               ./users/matte.nix
+            ];
+          };
+          live-installer = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = inputs;
+            modules = [
+              ./hosts/live-installer/configuration.nix
             ];
           };
         };
