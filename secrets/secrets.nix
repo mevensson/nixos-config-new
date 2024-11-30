@@ -11,6 +11,7 @@ in
 {
   "matte_password.age".publicKeys = allKeys;
   "matte_id_ed25519.age".publicKeys = allKeys;
+  "matte-gh-hosts-yaml.age".publicKeys = allKeys;
   "test_password.age".publicKeys = allKeys;
   "ryzen-cachix-deploy-agent.age".publicKeys = allKeys;
   "t14g1-cachix-deploy-agent.age".publicKeys = allKeys;

@@ -7,6 +7,7 @@
     ../../profiles/graphical/gnome.nix
     ../../profiles/shells/core.nix
     ../../profiles/shells/fish.nix
+    ../../profiles/shells/gh.nix
 
     ../../users/matte.nix
   ];
