@@ -124,9 +124,8 @@ jobs:
       - name: Check Free Disk
         run: df -H
 
-  done:
+  success:
     runs-on: ubuntu-latest
-    if: success()
     needs:
     - build-ryzen
     - build-t14g1
@@ -147,3 +146,15 @@ jobs:
 
       - name: Show Flake
         run: nix flake show --allow-import-from-derivation
+
+  failure:
+    if: cancelled() || contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'failure')
+    runs-on: ubuntu-latest
+    needs:
+    - build-ryzen
+    - build-t14g1
+
+    steps:
+      - run: |
+          echo "Some workflows have failed!"
+          exit 1
