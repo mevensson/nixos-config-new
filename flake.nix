@@ -26,12 +26,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    chaotic = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-      inputs.jovian.follows = "jovian";
-    };
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,10 +35,6 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    jovian = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
@@ -132,7 +122,6 @@
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/default.nix
               ./profiles/graphical/gnome.nix
-              ./profiles/graphical/jovian.nix
               ./profiles/remotefs/sshfs/ds920.nix
               ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
