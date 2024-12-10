@@ -1,10 +1,10 @@
 { nur, ... }:
 {
   imports = [
-    nur.nixosModules.nur
+    nur.modules.nixos.default
   ];
 
   home-manager.sharedModules = [
-    nur.hmModules.nur
+    nur.modules.homeManager.default
   ];
 }
