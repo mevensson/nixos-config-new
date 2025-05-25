@@ -4,6 +4,7 @@
     ./extensions/jnoortheen.nix-ide.nix
     ./extensions/mkhl.direnv.nix
     ./extensions/redhat.vscode-yaml.nix
+    ./extensions/rust-lang.rust-analyzer.nix
   ];
 
   home.sessionVariables = {
