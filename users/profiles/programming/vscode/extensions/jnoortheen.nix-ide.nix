@@ -5,12 +5,14 @@
   ];
 
   programs.vscode = {
-    extensions = with pkgs.vscode-extensions; [
-      jnoortheen.nix-ide
-    ];
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+      ];
 
-    userSettings = {
-      "nix.serverPath" = "nixd";
+      userSettings = {
+        "nix.serverPath" = "nixd";
+      };
     };
   };
 }
