@@ -9,16 +9,16 @@
       enable = true;
     };
 
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
+
     xserver = {
       enable = true;
 
       xkb = {
         layout = "se";
-      };
-
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
       };
     };
   };
