@@ -3,7 +3,7 @@
   programs.vscode = {
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
-        redhat.vscode-yaml
+        smcpeak.default-keys-windows
       ];
     };
   };

@@ -1,6 +1,7 @@
 {
   programs.vscode = {
     profiles.default.userSettings = {
+      "editor.rulers" = [ 100 ];
       "editor.wordWrap" = "bounded";
       "editor.wordWrapColumn" = 100;
       "editor.wrappingIndent" = "indent";

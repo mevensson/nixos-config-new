@@ -1,10 +1,7 @@
 {
   imports = [
     ./user-settings.nix
-    ./extensions/jnoortheen.nix-ide.nix
-    ./extensions/mkhl.direnv.nix
-    ./extensions/redhat.vscode-yaml.nix
-    ./extensions/rust-lang.rust-analyzer.nix
+    ./extensions/smcpeak.default-keys-windows.nix
   ];
 
   home.sessionVariables = {
@@ -14,6 +11,6 @@
 
   programs.vscode = {
     enable = true;
-    mutableExtensionsDir = false;
+    mutableExtensionsDir = true;
   };
 }
