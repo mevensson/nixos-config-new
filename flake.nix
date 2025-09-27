@@ -192,10 +192,10 @@
             }
           ];
           packages = [
-            pkgs.vscode
             config.treefmt.build.wrapper
             inputs.agenix.packages.${system}.default
             pkgs.nixpkgs-fmt
+            pkgs.nixd
           ];
         };
 
