@@ -1,6 +1,7 @@
 {
   imports = [
     ./user-settings.nix
+    ./extensions/smcpeak.default-keys-windows.nix
   ];
 
   home.sessionVariables = {
