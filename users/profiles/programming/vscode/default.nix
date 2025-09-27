@@ -14,6 +14,6 @@
 
   programs.vscode = {
     enable = true;
-    mutableExtensionsDir = false;
+    mutableExtensionsDir = true;
   };
 }
