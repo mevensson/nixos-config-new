@@ -15,6 +15,22 @@
     ];
   };
 
+  fileSystems."/media/ds920/Misc" = {
+    device = "matte@ds920.local:/Misc";
+    fsType = "sshfs";
+    options = [
+      "nodev"
+      "noatime"
+      "allow_other"
+      "idmap=user"
+      "IdentityFile=/run/agenix/matte_id_ed25519"
+      "_netdev"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=600"
+      "port=2222"
+    ];
+  };
+
   services.openssh.knownHosts = {
     ds920 = {
       hostNames = [
