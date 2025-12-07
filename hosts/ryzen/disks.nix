@@ -7,7 +7,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/BE1C-EBF4";
+    device = "/dev/disk/by-uuid/F957-999B";
     fsType = "vfat";
   };
 
@@ -31,11 +31,6 @@
 
   fileSystems."/media/btrfs-root" = {
     device = "/dev/disk/by-uuid/54b58a38-6b0b-4c8e-a35d-44e3e8a052ac";
-    fsType = "btrfs";
-  };
-
-  fileSystems."/media/btrfs-misc" = {
-    device = "/dev/disk/by-uuid/b45fa06a-f470-4ac0-bbd6-492398ec12d4";
     fsType = "btrfs";
   };
 }
