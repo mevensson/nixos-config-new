@@ -49,9 +49,9 @@ in
         stateVersion = "22.05";
       };
 
-      programs.git = {
-        userName = name;
-        userEmail = email;
+      programs.git.settings.user = {
+        name = name;
+        email = email;
       };
     };
 
