@@ -46,6 +46,10 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-facter-modules = {
+      url = "github:numtide/nixos-facter-modules";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:nix-community/NUR";
     };
