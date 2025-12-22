@@ -4,7 +4,6 @@
   imports = [
     ./appindicator.nix
     ./blur-my-shell.nix
-    ./espresso.nix
     ./extension-list.nix
     ./vitals.nix
   ];
