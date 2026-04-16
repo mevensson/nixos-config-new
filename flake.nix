@@ -24,10 +24,15 @@
     cachix-deploy = {
       url = "github:cachix/cachix-deploy-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.disko.follows = "disko";
       inputs.home-manager.follows = "home-manager";
     };
     devshell = {
       url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
@@ -40,6 +45,10 @@
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-facter-modules = {
+      url = "github:numtide/nixos-facter-modules";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
     nur = {
       url = "github:nix-community/NUR";
@@ -75,6 +84,7 @@
 
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/default.nix
+              ./profiles/core/cachix-deploy.nix
               ./profiles/graphical/discord.nix
               ./profiles/graphical/gamescope-steam-session.nix
               ./profiles/graphical/gdm.nix
@@ -100,6 +110,7 @@
 
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/default.nix
+              ./profiles/core/cachix-deploy.nix
               ./profiles/graphical/discord.nix
               ./profiles/graphical/gamescope-steam-session.nix
               ./profiles/graphical/gdm.nix
@@ -123,6 +134,7 @@
 
               ./profiles/boot/systemd-boot.nix
               ./profiles/core/default.nix
+              ./profiles/core/cachix-deploy.nix
               ./profiles/graphical/gnome.nix
               ./profiles/remotefs/sshfs/ds920.nix
               ./profiles/shells/core.nix
@@ -130,6 +142,13 @@
               ./profiles/sound/pipewire.nix
 
               ./users/matte.nix
+            ];
+          };
+          live-installer = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = inputs;
+            modules = [
+              ./hosts/live-installer/configuration.nix
             ];
           };
         };

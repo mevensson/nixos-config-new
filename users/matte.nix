@@ -1,4 +1,4 @@
-{ self, config, pkgs, ... }:
+{ self, agenix, config, pkgs, ... }:
 let
   name = "Mattias Evensson";
   email = "mattias@evensson.eu";
@@ -15,12 +15,14 @@ in
     , ...
     }: {
       imports = [
+        agenix.homeManagerModules.age
         ./profiles/graphical/firefox.nix
         ./profiles/graphical/gnome/default.nix
         ./profiles/graphical/gnome/extensions/forge.nix
         ./profiles/graphical/gnome/variety/default.nix
         ./profiles/graphical/gnome/variety/bing.nix
         ./profiles/programming/vscode/default.nix
+        ./profiles/programming/gh.nix
         ./profiles/shell/direnv.nix
         ./profiles/shell/fish.nix
         ./profiles/shell/fzf.nix
