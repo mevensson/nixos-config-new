@@ -11,7 +11,6 @@
 
     displayManager.gdm = {
       enable = true;
-      wayland = true;
     };
 
     xserver = {
