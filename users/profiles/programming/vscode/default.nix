@@ -1,6 +1,7 @@
 {
   imports = [
     ./user-settings.nix
+    ./extensions/continue.continue.nix
     ./extensions/smcpeak.default-keys-windows.nix
   ];
 
