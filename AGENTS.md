@@ -51,3 +51,5 @@ VS Code with nixd LSP. Format on save via `nixpkgs-fmt`. nixd uses `nixosConfigu
 ## GitHub
 
 Use `gh` (GitHub CLI) for all GitHub operations (issues, PRs, checks, releases). Available in the devshell.
+
+PRs should be set to auto-merge with a merge commit.
