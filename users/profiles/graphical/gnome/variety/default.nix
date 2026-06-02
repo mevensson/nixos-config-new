@@ -6,7 +6,10 @@
     ];
 
     file = {
-      ".config/autostart/variety.desktop".source = (pkgs.variety + "/share/applications/variety.desktop");
+      ".config/autostart/variety.desktop" = {
+        source = (pkgs.variety + "/share/applications/variety.desktop");
+        force = true;
+      };
     };
   };
 }

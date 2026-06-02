@@ -5,9 +5,11 @@
   ];
 
   home-manager.backupFileExtension = "backup";
-  home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.sharedModules = [
     plasma-manager.homeModules.plasma-manager
+    {
+      nixpkgs.config.allowUnfree = true;
+    }
   ];
 }
