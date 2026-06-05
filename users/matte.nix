@@ -17,7 +17,7 @@ in
       imports = [
         ./profiles/graphical/firefox.nix
         ./profiles/graphical/gnome/default.nix
-        ./profiles/graphical/gnome/extensions/forge.nix
+        ./profiles/graphical/gnome/extensions/tiling-assistant.nix
         ./profiles/graphical/gnome/variety/default.nix
         ./profiles/graphical/gnome/variety/bing.nix
         ./profiles/programming/vscode/default.nix
