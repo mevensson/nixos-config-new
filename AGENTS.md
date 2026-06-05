@@ -48,6 +48,10 @@ Public keys in `secrets/secrets.nix`. Currently encrypted: `matte_password`, `ma
 
 VS Code with nixd LSP. Format on save via `nixpkgs-fmt`. nixd uses `nixosConfigurations.ryzen.options` for option completion.
 
+## File conventions
+
+Always ensure every file ends with a trailing newline — `treefmt-check` in CI rejects files that don't.
+
 ## GitHub
 
 Use `gh` (GitHub CLI) for all GitHub operations (issues, PRs, checks, releases). Available in the devshell.
