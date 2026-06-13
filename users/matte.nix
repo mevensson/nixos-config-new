@@ -1,7 +1,8 @@
-{ self, agenix, config, pkgs, ... }:
+{ self, agenix, llm-agents, config, pkgs, ... }:
 let
   name = "Mattias Evensson";
   email = "mattias@evensson.eu";
+  openrouterApiKeyPath = config.age.secrets.openrouter_api_key.path;
 in
 {
   age.secrets = {
@@ -16,6 +17,11 @@ in
     { lib
     , ...
     }: {
+      _module.args = {
+        llm-agents = llm-agents;
+        inherit openrouterApiKeyPath;
+      };
+
       imports = [
         agenix.homeManagerModules.age
         ./profiles/graphical/firefox.nix
@@ -25,6 +31,7 @@ in
         ./profiles/graphical/gnome/variety/bing.nix
         ./profiles/programming/vscode/default.nix
         ./profiles/programming/gh.nix
+        ./profiles/programming/kilo.nix
         ./profiles/shell/direnv.nix
         ./profiles/shell/fish.nix
         ./profiles/shell/fzf.nix
