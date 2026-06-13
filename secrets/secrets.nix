@@ -18,4 +18,5 @@ in
   "game-cachix-deploy-agent.age".publicKeys = allKeys;
   "luks-password.age".publicKeys = allKeys;
   "live-install-ssh-host-ed25519.age".publicKeys = allKeys;
+  "openrouter_api_key.age".publicKeys = allKeys;
 }

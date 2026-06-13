@@ -8,6 +8,8 @@ in
     matte_password.file = "${self}/secrets/matte_password.age";
     matte_id_ed25519.file = "${self}/secrets/matte_id_ed25519.age";
     matte_id_ed25519.owner = "matte";
+    openrouter_api_key.file = "${self}/secrets/openrouter_api_key.age";
+    openrouter_api_key.owner = "matte";
   };
 
   home-manager.users.matte =
