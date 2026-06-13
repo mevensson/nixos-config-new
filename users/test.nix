@@ -14,7 +14,7 @@ in
       imports = [
         ./profiles/graphical/firefox.nix
         ./profiles/graphical/gnome/default.nix
-        ./profiles/graphical/gnome/extensions/tiling-assistant.nix
+        ./profiles/graphical/gnome/extensions/tiling-shell.nix
         ./profiles/shell/direnv.nix
         ./profiles/shell/fish.nix
         ./profiles/shell/fzf.nix
