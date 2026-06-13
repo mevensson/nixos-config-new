@@ -89,7 +89,7 @@
               ./profiles/graphical/logitechg29.nix
               ./profiles/graphical/spotify.nix
               ./profiles/graphical/steam.nix
-              ./profiles/llm/ollama.nix
+              ./profiles/llm/llama-swap.nix
               ./profiles/remotefs/sshfs/ds920.nix
               ./profiles/shells/core.nix
               ./profiles/shells/fish.nix
