@@ -17,7 +17,7 @@
 
       font-name = "Cantarell 10";
       document-font-name = "Cantarell 10";
-      monospace-font-name = "DejaVu Sans Mono 10";
+      monospace-font-name = "JetBrains Mono 10";
 
       font-antialiasing = "rgba";
       font-hinting = "full";
@@ -43,7 +43,7 @@
 
     "org/gnome/shell" = {
       favorite-apps = [
-        "org.gnome.Console.desktop"
+        "ghostty.desktop"
         "org.gnome.Nautilus.desktop"
         "firefox.desktop"
         "steam.desktop"

@@ -17,6 +17,7 @@ in
       imports = [
         agenix.homeManagerModules.age
         ./profiles/graphical/firefox.nix
+        ./profiles/graphical/ghostty/default.nix
         ./profiles/graphical/gnome/default.nix
         ./profiles/graphical/gnome/extensions/tiling-shell.nix
         ./profiles/graphical/gnome/variety/default.nix
