@@ -19,13 +19,13 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v27
+        uses: cachix/install-nix-action@v31
 
       - name: Configure Cachix caches
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v17
         with:
           name: mevensson-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
@@ -40,7 +40,7 @@ jobs:
 
     steps:
       - name: Free Disk Space
-        uses: endersonmenezes/free-disk-space@v2
+        uses: endersonmenezes/free-disk-space@v3
         with:
           remove_android: false
           remove_dotnet: true
@@ -49,13 +49,13 @@ jobs:
           remove_swap: false
 
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v27
+        uses: cachix/install-nix-action@v31
 
       - name: Configure Cachix caches
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v17
         with:
           name: mevensson-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
@@ -85,7 +85,7 @@ jobs:
 
     steps:
       - name: Free Disk Space
-        uses: endersonmenezes/free-disk-space@v2
+        uses: endersonmenezes/free-disk-space@v3
         with:
           remove_android: false
           remove_dotnet: true
@@ -94,13 +94,13 @@ jobs:
           remove_swap: false
 
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v27
+        uses: cachix/install-nix-action@v31
 
       - name: Configure Cachix caches
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v17
         with:
           name: mevensson-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
@@ -132,13 +132,13 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v27
+        uses: cachix/install-nix-action@v31
 
       - name: Configure Cachix caches
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v17
         with:
           name: mevensson-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
