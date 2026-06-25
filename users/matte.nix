@@ -3,6 +3,7 @@ let
   name = "Mattias Evensson";
   email = "mattias@evensson.eu";
   openrouterApiKeyPath = config.age.secrets.openrouter_api_key.path;
+  opencodeZenApiKeyPath = config.age.secrets.opencode_zen_api_key.path;
 in
 {
   age.secrets = {
@@ -11,6 +12,8 @@ in
     matte_id_ed25519.owner = "matte";
     openrouter_api_key.file = "${self}/secrets/openrouter_api_key.age";
     openrouter_api_key.owner = "matte";
+    opencode_zen_api_key.file = "${self}/secrets/opencode_zen_api_key.age";
+    opencode_zen_api_key.owner = "matte";
   };
 
   home-manager.users.matte =
@@ -19,7 +22,7 @@ in
     }: {
       _module.args = {
         llm-agents = llm-agents;
-        inherit openrouterApiKeyPath;
+        inherit openrouterApiKeyPath opencodeZenApiKeyPath;
         hasLocalModels = config.services.llama-swap.enable;
       };
 
@@ -34,6 +37,7 @@ in
         ./profiles/programming/gh.nix
         ./profiles/programming/opencode
         ./profiles/programming/opencode/deepseek-v4-flash.nix
+        ./profiles/programming/opencode/deepseek-v4-flash-free.nix
         ./profiles/programming/opencode/gemma4-12b.nix
         ./profiles/programming/opencode/gemma4-26b.nix
         ./profiles/programming/opencode/qwen3-5-9b.nix

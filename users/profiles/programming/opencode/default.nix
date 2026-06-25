@@ -1,4 +1,4 @@
-{ config, lib, pkgs, llm-agents, openrouterApiKeyPath, hasLocalModels, ... }:
+{ config, lib, pkgs, llm-agents, openrouterApiKeyPath, opencodeZenApiKeyPath, hasLocalModels, ... }:
 
 let
   opencode = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
@@ -35,6 +35,18 @@ in
       default = { };
     };
 
+    zenModels = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule {
+        options = {
+          name = lib.mkOption { type = lib.types.str; };
+          tool_call = lib.mkOption { type = lib.types.bool; default = true; };
+          limit = lib.mkOption { type = limitType; };
+          reasoning = lib.mkOption { type = lib.types.bool; default = false; };
+        };
+      });
+      default = { };
+    };
+
     remoteModels = lib.mkOption {
       type = lib.types.attrsOf (lib.types.submodule {
         options = {
@@ -64,6 +76,12 @@ in
               apiKey = "{file:${openrouterApiKeyPath}}";
             };
             models = cfg.remoteModels;
+          };
+          opencode = {
+            options = {
+              apiKey = "{file:${opencodeZenApiKeyPath}}";
+            };
+            models = cfg.zenModels;
           };
         } // localProvider;
       };

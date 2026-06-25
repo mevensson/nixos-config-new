@@ -1,0 +1,11 @@
+{ lib, ... }: {
+  programs.opencode.zenModels."deepseek/deepseek-v4-flash:free" = {
+    name = "DeepSeek V4 Flash Free (Zen)";
+    tool_call = true;
+    limit = {
+      context = 1048576;
+      output = 32768;
+    };
+    reasoning = true;
+  };
+}
