@@ -43,7 +43,7 @@
 
     "org/gnome/shell" = {
       favorite-apps = [
-        "ghostty.desktop"
+        "com.mitchellh.ghostty.desktop"
         "org.gnome.Nautilus.desktop"
         "firefox.desktop"
         "steam.desktop"
