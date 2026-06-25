@@ -22,7 +22,37 @@
       active-screen-edges = true;
 
       layouts-json = lib.hm.gvariant.mkString
-        ''[{"id":"3 Equal Columns","tiles":[{"x":0,"y":0,"width":0.333,"height":1,"groups":[1]},{"x":0.333,"y":0,"width":0.333,"height":1,"groups":[1,2]},{"x":0.666,"y":0,"width":0.333,"height":1,"groups":[2]}]},{"id":"2x16:9 Left + Right","tiles":[{"x":0,"y":0,"width":0.374,"height":0.5,"groups":[1,2]},{"x":0,"y":0.5,"width":0.374,"height":0.5,"groups":[1,2]},{"x":0.374,"y":0,"width":0.626,"height":1,"groups":[2,3]}]}]'';
+        ''[
+          {
+            "id": "Fullsize",
+            "tiles": [
+              { "x": 0, "y": 0, "width": 1, "height": 1, "groups": [1] }
+            ]
+          },
+          {
+            "id": "2 Equal Columns",
+            "tiles": [
+              { "x": 0, "y": 0, "width": 0.5, "height": 1, "groups": [1] },
+              { "x": 0.5, "y": 0, "width": 0.5, "height": 1, "groups": [2] }
+            ]
+          },
+          {
+            "id": "3 Equal Columns",
+            "tiles": [
+              { "x": 0, "y": 0, "width": 0.333, "height": 1, "groups": [1] },
+              { "x": 0.333, "y": 0, "width": 0.333, "height": 1, "groups": [1, 2] },
+              { "x": 0.666, "y": 0, "width": 0.333, "height": 1, "groups": [2] }
+            ]
+          },
+          {
+            "id": "2x16:9 Left + Right",
+            "tiles": [
+              { "x": 0, "y": 0, "width": 0.374, "height": 0.5, "groups": [1, 2] },
+              { "x": 0, "y": 0.5, "width": 0.374, "height": 0.5, "groups": [1, 2] },
+              { "x": 0.374, "y": 0, "width": 0.626, "height": 1, "groups": [2, 3] }
+            ]
+          }
+        ]'';
     };
 
     "org/gnome/desktop/wm/keybindings" = {
