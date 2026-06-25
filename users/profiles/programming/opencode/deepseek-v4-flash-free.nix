@@ -3,7 +3,7 @@
     name = "DeepSeek V4 Flash Free (Zen)";
     tool_call = true;
     limit = {
-      context = 1048576;
+      context = 200000;
       output = 32768;
     };
     reasoning = true;
