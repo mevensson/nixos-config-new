@@ -1,11 +1,9 @@
 { ... }: {
-  nix.settings = [
+  nix.settings = {
     auto-optimise-store = true;
-  ];
-  nix.optimize = {
+  };
+  nix.optimise = {
     automatic = true;
-    dates = [
-      "03:45"
-    ];
+    dates = [ "03:45" ];
   };
 }

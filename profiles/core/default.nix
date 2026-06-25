@@ -2,6 +2,7 @@
   imports = [
     ./agenix.nix
     ./auto-gc.nix
+    ./auto-optimize.nix
     ./cachix.nix
     ./fwupd.nix
     ./home-manager.nix
