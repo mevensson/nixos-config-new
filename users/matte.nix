@@ -31,7 +31,8 @@ in
         ./profiles/graphical/gnome/variety/bing.nix
         ./profiles/programming/vscode/default.nix
         ./profiles/programming/gh.nix
-        ./profiles/programming/kilo.nix
+        ./profiles/programming/kilo
+        ./profiles/programming/kilo/deepseek-v4-flash.nix
         ./profiles/shell/direnv.nix
         ./profiles/shell/fish.nix
         ./profiles/shell/fzf.nix

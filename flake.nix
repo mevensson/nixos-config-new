@@ -109,6 +109,7 @@
               ./profiles/sound/pipewire.nix
 
               ./users/matte.nix
+              ./users/matte-kilo-extra-models.nix
               ./users/test.nix
             ];
           };
