@@ -20,6 +20,7 @@ in
       _module.args = {
         llm-agents = llm-agents;
         inherit openrouterApiKeyPath;
+        hasLocalModels = config.services.llama-swap.enable;
       };
 
       imports = [
@@ -31,8 +32,11 @@ in
         ./profiles/graphical/gnome/variety/bing.nix
         ./profiles/programming/vscode/default.nix
         ./profiles/programming/gh.nix
-        ./profiles/programming/kilo
-        ./profiles/programming/kilo/deepseek-v4-flash.nix
+        ./profiles/programming/opencode
+        ./profiles/programming/opencode/deepseek-v4-flash.nix
+        ./profiles/programming/opencode/gemma4-12b.nix
+        ./profiles/programming/opencode/gemma4-26b.nix
+        ./profiles/programming/opencode/qwen3-5-9b.nix
         ./profiles/shell/direnv.nix
         ./profiles/shell/fish.nix
         ./profiles/shell/fzf.nix

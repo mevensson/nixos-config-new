@@ -1,5 +1,5 @@
 { lib, ... }: {
-  programs.kilo.remoteModels."deepseek/deepseek-v4-flash" = {
+  programs.opencode.remoteModels."deepseek/deepseek-v4-flash" = {
     name = "DeepSeek V4 Flash";
     tool_call = true;
     limit = {

@@ -1,9 +1,8 @@
-{ config, lib, pkgs, llm-agents, openrouterApiKeyPath, ... }:
+{ config, lib, pkgs, llm-agents, openrouterApiKeyPath, hasLocalModels, ... }:
 
 let
-  kilocode-cli = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.kilocode-cli;
-
-  cfg = config.programs.kilo;
+  opencode = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
+  cfg = config.programs.opencode;
 
   limitType = lib.types.submodule {
     options = {
@@ -11,9 +10,20 @@ let
       output = lib.mkOption { type = lib.types.int; default = 32768; };
     };
   };
+
+  localProvider = lib.optionalAttrs hasLocalModels {
+    llama.cpp = {
+      npm = "@ai-sdk/openai-compatible";
+      name = "Local (llama-swap)";
+      options = {
+        baseURL = "http://localhost:8080/v1";
+      };
+      models = cfg.localModels;
+    };
+  };
 in
 {
-  options.programs.kilo = {
+  options.programs.opencode = {
     localModels = lib.mkOption {
       type = lib.types.attrsOf (lib.types.submodule {
         options = {
@@ -39,29 +49,23 @@ in
   };
 
   config = {
-    home.packages = [ kilocode-cli ];
+    home.packages = [ opencode ];
 
-    home.file.".config/kilo/kilo.jsonc".text =
+    home.file.".config/opencode/opencode.jsonc".text =
       builtins.toJSON {
-        "$schema" = "https://app.kilo.ai/config.json";
+        "$schema" = "https://opencode.ai/config.json";
+        model =
+          if hasLocalModels
+          then "llama.cpp/gemma4:12b"
+          else "openrouter/deepseek/deepseek-v4-flash";
         provider = {
-          openai-compatible = {
-            options = {
-              baseURL = "http://localhost:8080";
-            };
-            models = cfg.localModels;
-          };
           openrouter = {
             options = {
-              apiKey = "{env:OPENROUTER_API_KEY}";
-              baseURL = "https://openrouter.ai/api/v1";
+              apiKey = "{file:${openrouterApiKeyPath}}";
             };
             models = cfg.remoteModels;
           };
-        };
+        } // localProvider;
       };
-
-    home.sessionVariables.OPENROUTER_API_KEY =
-      "$(cat ${openrouterApiKeyPath})";
   };
 }

@@ -1,5 +1,5 @@
 { lib, ... }: {
-  programs.kilo.localModels."gemma4:26b" = {
+  programs.opencode.localModels."gemma4:26b" = {
     name = "Gemma 4 26b (Local, ROCm)";
     tool_call = true;
     limit = {
