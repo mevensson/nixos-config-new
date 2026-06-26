@@ -1,19 +1,31 @@
-{ self, agenix, config, pkgs, ... }:
+{ self, agenix, llm-agents, config, pkgs, ... }:
 let
   name = "Mattias Evensson";
   email = "mattias@evensson.eu";
+  openrouterApiKeyPath = config.age.secrets.openrouter_api_key.path;
+  opencodeZenApiKeyPath = config.age.secrets.opencode_zen_api_key.path;
 in
 {
   age.secrets = {
     matte_password.file = "${self}/secrets/matte_password.age";
     matte_id_ed25519.file = "${self}/secrets/matte_id_ed25519.age";
     matte_id_ed25519.owner = "matte";
+    openrouter_api_key.file = "${self}/secrets/openrouter_api_key.age";
+    openrouter_api_key.owner = "matte";
+    opencode_zen_api_key.file = "${self}/secrets/opencode_zen_api_key.age";
+    opencode_zen_api_key.owner = "matte";
   };
 
   home-manager.users.matte =
     { lib
     , ...
     }: {
+      _module.args = {
+        llm-agents = llm-agents;
+        inherit openrouterApiKeyPath opencodeZenApiKeyPath;
+        hasLocalModels = config.services.llama-swap.enable;
+      };
+
       imports = [
         agenix.homeManagerModules.age
         ./profiles/graphical/firefox.nix
@@ -24,6 +36,12 @@ in
         ./profiles/graphical/gnome/variety/bing.nix
         ./profiles/programming/vscode/default.nix
         ./profiles/programming/gh.nix
+        ./profiles/programming/opencode
+        ./profiles/programming/opencode/deepseek-v4-flash.nix
+        ./profiles/programming/opencode/deepseek-v4-flash-free.nix
+        ./profiles/programming/opencode/gemma4-12b.nix
+        ./profiles/programming/opencode/gemma4-26b.nix
+        ./profiles/programming/opencode/qwen3-5-9b.nix
         ./profiles/shell/direnv.nix
         ./profiles/shell/fish.nix
         ./profiles/shell/fzf.nix
