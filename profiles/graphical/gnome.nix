@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     gnome-tweaks
+    mission-center
 
     firmware-updater
     gnome-firmware
