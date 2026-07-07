@@ -14,6 +14,7 @@
 
     "org/gnome/shell/extensions/vitals" = {
       fixed-widths = false;
+      monitor-cmd = "missioncenter";
       hot-sensors = [
         "_processor_usage_"
         "_processor_frequency_"
