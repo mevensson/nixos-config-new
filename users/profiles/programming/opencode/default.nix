@@ -66,10 +66,7 @@ in
     home.file.".config/opencode/opencode.jsonc".text =
       builtins.toJSON {
         "$schema" = "https://opencode.ai/config.json";
-        model =
-          if hasLocalModels
-          then "llama.cpp/gemma4:12b"
-          else "openrouter/deepseek/deepseek-v4-flash";
+
         provider = {
           openrouter = {
             options = {
