@@ -78,7 +78,10 @@ in
             models = cfg.remoteModels;
           };
           opencode = {
+            npm = "@ai-sdk/openai-compatible";
+            name = "OpenCode Zen";
             options = {
+              baseURL = "https://opencode.ai/zen/v1";
               apiKey = "{file:${opencodeZenApiKeyPath}}";
             };
             models = cfg.zenModels;

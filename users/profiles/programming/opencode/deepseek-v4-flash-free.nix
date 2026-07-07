@@ -1,5 +1,5 @@
 { lib, ... }: {
-  programs.opencode.zenModels."deepseek/deepseek-v4-flash:free" = {
+  programs.opencode.zenModels."deepseek-v4-flash-free" = {
     name = "DeepSeek V4 Flash Free (Zen)";
     tool_call = true;
     limit = {
