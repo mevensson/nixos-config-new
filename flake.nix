@@ -5,10 +5,12 @@
     extra-substituters = [
       "https://mevensson-nixos-config.cachix.org"
       "https://nyx.chaotic.cx/"
+      "https://cache.numtide.com"
     ];
     extra-trusted-public-keys = [
       "mevensson-nixos-config.cachix.org-1:nTyMdA8pqMkgk0Amny05+p3ujTE90BTilJPMwceHSEQ="
       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
     allow-import-from-derivation = true;
   };
