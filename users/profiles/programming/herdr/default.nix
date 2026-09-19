@@ -5,7 +5,7 @@
     settings = {
       onboarding = false;
       terminal.default_shell = "fish";
-      theme.name = "terminal";
+      theme.name = "catppuccin";
     };
   };
 }
