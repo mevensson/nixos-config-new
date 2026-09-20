@@ -3,6 +3,9 @@ let
   herdr = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr;
   pluginDir = "${config.xdg.configHome}/herdr/local-plugins/matte.auto-tabs";
   worktreesDir = "~/git/worktrees";
+  herdrSkill = pkgs.runCommand "herdr-skill" { } ''
+    ${lib.getExe herdr} --skill > $out
+  '';
 in
 {
   programs.herdr = {
@@ -21,6 +24,8 @@ in
   programs.direnv.config.whitelist.prefix = [ worktreesDir ];
 
   home.packages = [ pkgs.jq ];
+
+  home.file.".agents/skills/herdr/SKILL.md".source = herdrSkill;
 
   home.activation.linkHerdrAutoTabs =
     lib.hm.dag.entryAfter [ "writeBoundary" ] ''
