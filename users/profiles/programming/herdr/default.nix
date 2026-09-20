@@ -9,6 +9,7 @@ in
 {
   imports = [
     ./plugin.nix
+    ./worktree-tools.nix
   ];
 
   programs.herdr = {
