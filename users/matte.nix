@@ -36,6 +36,7 @@ in
         ./profiles/graphical/gnome/variety/bing.nix
         ./profiles/programming/vscode/default.nix
         ./profiles/programming/gh.nix
+        ./profiles/programming/herdr
         ./profiles/programming/opencode
         ./profiles/programming/opencode/deepseek-v4-flash.nix
         ./profiles/programming/opencode/deepseek-v4-flash-free.nix

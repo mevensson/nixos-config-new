@@ -1,0 +1,10 @@
+id = "matte.auto-tabs"
+name = "Auto Tabs"
+version = "0.1.0"
+min_herdr_version = "0.7.0"
+description = "Create an opencode agent tab and a git shell tab in every new workspace"
+platforms = ["linux"]
+
+[[events]]
+on = "workspace.created"
+command = ["sh", "auto-tabs.sh"]
