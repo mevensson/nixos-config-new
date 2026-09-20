@@ -24,5 +24,17 @@ fi
 "$bin" tab create --workspace "$ws" --cwd "$cwd" --label git --no-focus >/dev/null
 
 if [ -n "$agent_pane" ]; then
-  "$bin" agent start "agent-${ws}" --kind opencode --pane "$agent_pane" >/dev/null 2>&1 || true
+  agent_name="agent-$(printf '%s' "$ws" | tr '[:upper:]' '[:lower:]')"
+  attempt=0
+  while :; do
+    if err=$("$bin" agent start "$agent_name" --kind opencode --pane "$agent_pane" 2>&1 >/dev/null); then
+      break
+    fi
+    attempt=$((attempt + 1))
+    if [ "$attempt" -ge 15 ]; then
+      printf 'agent start failed after %s attempts: %s\n' "$attempt" "$err" >&2
+      break
+    fi
+    sleep 0.5
+  done
 fi
