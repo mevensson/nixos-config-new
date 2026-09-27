@@ -1,4 +1,4 @@
-{ self, agenix, llm-agents, config, pkgs, ... }:
+{ self, agenix, llm-agents, mattpocock-skills, config, pkgs, ... }:
 let
   name = "Mattias Evensson";
   email = "mattias@evensson.eu";
@@ -22,12 +22,14 @@ in
     }: {
       _module.args = {
         llm-agents = llm-agents;
+        mattpocock-skills = mattpocock-skills;
         inherit openrouterApiKeyPath opencodeZenApiKeyPath;
         hasLocalModels = config.services.llama-swap.enable;
       };
 
       imports = [
         agenix.homeManagerModules.age
+        ./profiles/agents/skills.nix
         ./profiles/graphical/firefox.nix
         ./profiles/graphical/ghostty/default.nix
         ./profiles/graphical/gnome/default.nix
