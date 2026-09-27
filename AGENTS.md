@@ -56,8 +56,6 @@ Always ensure every file ends with a trailing newline — `treefmt-check` in CI 
 
 Use `gh` (GitHub CLI) for all GitHub operations (issues, PRs, checks, releases). Available in the devshell.
 
-PRs should be set to auto-merge with a merge commit.
-
 ## Plan workflow
 
 When writing or executing a plan for a new feature, follow this workflow:
