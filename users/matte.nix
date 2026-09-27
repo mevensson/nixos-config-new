@@ -40,8 +40,6 @@ in
         ./profiles/programming/gh.nix
         ./profiles/programming/herdr
         ./profiles/programming/opencode
-        ./profiles/programming/opencode/deepseek-v4-flash.nix
-        ./profiles/programming/opencode/deepseek-v4-flash-free.nix
         ./profiles/programming/opencode/gemma4-12b.nix
         ./profiles/programming/opencode/gemma4-26b.nix
         ./profiles/programming/opencode/qwen3-5-9b.nix
