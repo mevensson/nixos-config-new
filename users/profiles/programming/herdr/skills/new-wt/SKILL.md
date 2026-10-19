@@ -28,4 +28,11 @@ Create a new herdr git worktree and deliver a prompt to the agent that the
    command exits non-zero, show its output verbatim; the worktree may still have
    been created.
 
+The helper waits for Herdr interactive readiness and OpenCode's rendered welcome
+input controls before submitting once. A startup-readiness failure means the
+prompt was not submitted. A submission/activity error (including
+`agent_prompt_stalled` or a timeout) does not prove the prompt was lost. Inspect
+the reported pane with `herdr agent get` and `herdr agent read` before deciding
+whether to resend; never automatically retry the prompt or recreate the worktree.
+
 Do not create the worktree with raw `git worktree` or `herdr worktree` commands.

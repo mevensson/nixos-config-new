@@ -158,11 +158,51 @@ if [ -z "$pane" ]; then
   exit 1
 fi
 
-# Give the agent a moment to reach an interactive prompt before submitting.
-herdr agent wait "$pane" --until idle --until "done" --timeout 30000 >/dev/null 2>&1 || true
+# OpenCode can be classified as idle before its TUI has mounted. Require both
+# Herdr's readiness signal and the welcome input controls, not idle alone.
+startup_failed() {
+  printf 'new-wt: %s; prompt was not submitted\n' "$1" >&2
+  printf 'new-wt: branch=%s path=%s workspace=%s pane=%s\n' "$branch" "$wt_path" "$ws" "$pane" >&2
+  exit 1
+}
+
+deadline=$(( $(date +%s) + 30 ))
+ready=0
+while [ "$(date +%s)" -lt "$deadline" ]; do
+  if ! agent_json=$(herdr agent get "$pane" 2>&1); then
+    printf '%s\n' "$agent_json" >&2
+    startup_failed 'could not inspect startup agent'
+  fi
+  if ! printf '%s' "$agent_json" | jq -e --arg ws "$ws" \
+    '.result.agent | .workspace_id == $ws and (.agent == "opencode" or (.agent == null and .launch_pending == true))' >/dev/null; then
+    startup_failed 'startup agent disappeared or changed identity'
+  fi
+  status=$(printf '%s' "$agent_json" | jq -r '.result.agent.agent_status')
+  [ "$status" != blocked ] || startup_failed 'agent is blocked during startup'
+  if printf '%s' "$agent_json" | jq -e \
+    '.result.agent | .agent == "opencode" and .interactive_ready == true and (.agent_status == "idle" or .agent_status == "done")' >/dev/null; then
+    if ! screen=$(herdr agent read "$pane" --source detection --lines 120 2>&1); then
+      printf '%s\n' "$screen" >&2
+      startup_failed 'could not inspect startup input controls'
+    fi
+    if printf '%s\n' "$screen" | grep -F 'Ask anything' >/dev/null &&
+      printf '%s\n' "$screen" | grep -E 'tab +agents.*ctrl\+p +commands' >/dev/null; then
+      ready=1
+      break
+    fi
+  fi
+  sleep 0.2
+done
+[ "$ready" -eq 1 ] || startup_failed 'timed out waiting for OpenCode input controls'
 
 if ! prompt_err=$(herdr agent prompt "$pane" "$prompt" --wait --timeout 120000 2>&1 >/dev/null); then
-  printf 'new-wt: failed to submit prompt to %s\n' "$pane" >&2
+  code=$(printf '%s' "$prompt_err" | jq -r '.error.code // empty' 2>/dev/null || true)
+  if [ "$code" = agent_blocked ]; then
+    printf 'new-wt: agent rejected prompt before submission: %s\n' "$pane" >&2
+  else
+    printf 'new-wt: prompt submission or activity could not be confirmed for %s\n' "$pane" >&2
+    printf 'new-wt: inspect agent get/read before resending; the prompt may have been delivered\n' >&2
+  fi
   printf '%s\n' "$prompt_err" >&2
   printf 'new-wt: branch=%s path=%s workspace=%s pane=%s\n' "$branch" "$wt_path" "$ws" "$pane" >&2
   exit 1
