@@ -141,7 +141,7 @@
               ./profiles/graphical/libreoffice.nix
               ./profiles/graphical/spotify.nix
               ./profiles/graphical/steam.nix
-              ./profiles/graphical/zwift.nix
+              ./profiles/graphical/zwift
 
               ./profiles/remotefs/sshfs/ds920.nix
               ./profiles/shells/core.nix
