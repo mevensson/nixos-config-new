@@ -62,6 +62,10 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zwift = {
+      url = "github:netbrain/zwift";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     systems = {
       url = "github:nix-systems/default";
@@ -137,6 +141,7 @@
               ./profiles/graphical/libreoffice.nix
               ./profiles/graphical/spotify.nix
               ./profiles/graphical/steam.nix
+              ./profiles/graphical/zwift.nix
 
               ./profiles/remotefs/sshfs/ds920.nix
               ./profiles/shells/core.nix
