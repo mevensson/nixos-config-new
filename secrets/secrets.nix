@@ -20,4 +20,5 @@ in
   "live-install-ssh-host-ed25519.age".publicKeys = allKeys;
   "openrouter_api_key.age".publicKeys = allKeys;
   "opencode_zen_api_key.age".publicKeys = allKeys;
+  "zwift_password.age".publicKeys = allKeys;
 }

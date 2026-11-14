@@ -16,9 +16,6 @@
     xhost
   ];
 
-  # Preserve GPU access through rootless Podman's --group-add keep-groups.
-  users.users.matte.extraGroups = [ "video" "render" ];
-
   # Companion bridging and network-connected trainer discovery.
   networking.firewall = {
     allowedUDPPorts = [ 3022 3024 ];

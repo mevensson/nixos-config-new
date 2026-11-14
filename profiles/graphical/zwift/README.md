@@ -1,67 +1,38 @@
 # Zwift
 
-Zwift uses [netbrain/zwift](https://github.com/netbrain/zwift) with rootless
-Podman, host networking, and GPU passthrough. After deploying the configuration,
-log out and back in so the GPU group memberships take effect.
+## Launch and update
 
-## First launch
-
-Run these commands as `matte`, without `sudo`, from a GNOME terminal:
+As `matte`, pull the game image before first launch and whenever an update is
+needed. Image updates are manual:
 
 ```sh
-podman info --format '{{.Host.Security.Rootless}}'
 podman pull docker.io/netbrain/zwift:latest
 zwift
 ```
 
-The first command should print `true`. Zwift is also available in GNOME's
-application menu. Sign in interactively on first launch.
+Zwift is also available in the application menu. Use `ZWIFT_FG=1 zwift` to see
+logs in the terminal.
 
-For Bluetooth trainers and sensors:
+## Pair devices
 
-1. Connect the phone and host to the same LAN and open Zwift Companion on the
-   phone with Bluetooth enabled.
-2. In Zwift's paired devices screen, select **Pairing Options**, enable
-   **Companion Bridging**, and save.
-3. Pair the trainer and sensors, then verify graphics, audio, and device data
-   during a short ride. Exit and relaunch to check persistence.
+Keep the phone and host on the same LAN, open Zwift Companion with Bluetooth
+enabled, then select **Pairing Options → Enable Companion Bridging** in Zwift.
+Wi-Fi/Ethernet trainers can connect directly on the same LAN. ANT+ is unsupported.
 
-Wi-Fi/Ethernet trainers can use direct discovery on the same LAN. Direct host
-Bluetooth access is disabled; ANT+ is not supported by this solution. USB
-trainers require device-specific passthrough and potentially a udev rule.
+## Change the password
 
-## Updates and storage
-
-The launcher is pinned by `flake.lock`. Update it with `nix flake update zwift`,
-then check, build, and deploy the configuration as usual. Its built-in updater
-is disabled because it attempts to install outside Nix. This also disables
-automatic container-image pulls, so update the game image manually as `matte`
-before launching:
+From the repository's `secrets` directory:
 
 ```sh
-podman pull docker.io/netbrain/zwift:latest
+agenix -e zwift_password.age
 ```
 
-The `latest` image is updated independently of the Nix-pinned launcher. Podman
-stores images and the persistent `zwift-matte` volume under
-`~/.local/share/containers/storage` by default. The volume preserves Zwift data,
-including activities and workouts, across container restarts and image updates.
-Do not remove this volume when cleaning up old images.
+Enter only the password on one line, then rebuild and activate the configuration.
+The next launch imports the updated password automatically.
 
-Saved credentials can be configured later using upstream's
-[keyring or Podman secret support](https://netbrain.github.io/zwift/configuration/authentication/).
+## Save settings
 
-## Troubleshooting
-
-- Inspect the generated container command from the graphical session with
-  `DRYRUN=1 zwift`.
-- Inspect the running container with `podman ps` and its output with
-  `podman logs zwift-matte`. Use `ZWIFT_FG=1 zwift` to launch in the foreground.
-- For GPU permission errors, check `id` includes `video` and `render`, then
-  check access to `/dev/dri`. Log out and back in after group changes.
-- For pairing problems, check the phone/trainer and host are on the same LAN
-  without Wi-Fi client isolation. This profile uses host networking and allows
-  UDP ports 3022/3024 and TCP ports 21587/21588 as documented upstream.
-- The default display path is XWayland under GNOME. For display or audio issues,
-  launch from a terminal inside the desktop session and inspect the logs. Audio
-  uses the PulseAudio-compatible socket provided by PipeWire.
+Exit through Zwift's own controls and wait for **“Synchronized Zwift settings”**
+before closing the terminal. Interrupting the container can prevent settings from
+being saved. Keep the persistent Podman volume `zwift-matte` when cleaning up
+images; it holds settings, activities, and workouts.
