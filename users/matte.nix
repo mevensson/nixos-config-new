@@ -1,7 +1,8 @@
-{ self, agenix, llm-agents, mattpocock-skills, config, pkgs, ... }:
+{ self, agenix, llm-agents, mattpocock-skills, config, lib, pkgs, ... }:
 let
   name = "Mattias Evensson";
   email = "mattias@evensson.eu";
+  hasZwift = config.programs.zwift.enable or false;
   openrouterApiKeyPath = config.age.secrets.openrouter_api_key.path;
   opencodeZenApiKeyPath = config.age.secrets.opencode_zen_api_key.path;
 in
@@ -14,6 +15,10 @@ in
     openrouter_api_key.owner = "matte";
     opencode_zen_api_key.file = "${self}/secrets/opencode_zen_api_key.age";
     opencode_zen_api_key.owner = "matte";
+    zwift_password = lib.mkIf hasZwift {
+      file = "${self}/secrets/zwift_password.age";
+      owner = "matte";
+    };
   };
 
   home-manager.users.matte =
@@ -36,6 +41,7 @@ in
         ./profiles/graphical/gnome/extensions/tiling-shell.nix
         ./profiles/graphical/gnome/variety/default.nix
         ./profiles/graphical/gnome/variety/bing.nix
+        ./profiles/graphical/zwift.nix
         ./profiles/programming/vscode/default.nix
         ./profiles/programming/gh.nix
         ./profiles/programming/herdr
@@ -88,7 +94,8 @@ in
     hashedPasswordFile = config.age.secrets.matte_password.path;
     description = name;
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    # Preserve GPU access through rootless Podman's --group-add keep-groups.
+    extraGroups = [ "wheel" ] ++ lib.optionals hasZwift [ "video" "render" ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keyFiles = [ ./id_ed25519.pub ];
   };

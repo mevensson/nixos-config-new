@@ -450,7 +450,8 @@
         "nur": "nur",
         "plasma-manager": "plasma-manager",
         "systems": "systems",
-        "treefmt-nix": "treefmt-nix_3"
+        "treefmt-nix": "treefmt-nix_3",
+        "zwift": "zwift"
       }
     },
     "systems": {
@@ -528,6 +529,26 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "zwift": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793201536,
+        "narHash": "sha256-we3l+ZqNk3eTQ4Of8iLMltQITrNBomF77Gc5EIqgunU=",
+        "owner": "netbrain",
+        "repo": "zwift",
+        "rev": "d98cb5bf484847f249fad527424e8aec7fbc4171",
+        "type": "github"
+      },
+      "original": {
+        "owner": "netbrain",
+        "repo": "zwift",
         "type": "github"
       }
     }

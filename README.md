@@ -12,3 +12,8 @@ To create a live-installer on an USB stick run the following command:
 ```bash
 ./create-live-installer.sh <path/to/usb-device>
 ```
+
+# Zwift
+
+See the [Zwift profile documentation](profiles/graphical/zwift/README.md) for setup,
+pairing, updates, and troubleshooting.
