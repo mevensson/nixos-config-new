@@ -1,4 +1,4 @@
-# Zwift on t14g1
+# Zwift
 
 Zwift uses [netbrain/zwift](https://github.com/netbrain/zwift) with rootless
 Podman, host networking, and GPU passthrough. After deploying the configuration,
@@ -19,7 +19,7 @@ application menu. Sign in interactively on first launch.
 
 For Bluetooth trainers and sensors:
 
-1. Connect the phone and t14g1 to the same LAN and open Zwift Companion on the
+1. Connect the phone and host to the same LAN and open Zwift Companion on the
    phone with Bluetooth enabled.
 2. In Zwift's paired devices screen, select **Pairing Options**, enable
    **Companion Bridging**, and save.
@@ -59,7 +59,7 @@ Saved credentials can be configured later using upstream's
   `podman logs zwift-matte`. Use `ZWIFT_FG=1 zwift` to launch in the foreground.
 - For GPU permission errors, check `id` includes `video` and `render`, then
   check access to `/dev/dri`. Log out and back in after group changes.
-- For pairing problems, check the phone/trainer and laptop are on the same LAN
+- For pairing problems, check the phone/trainer and host are on the same LAN
   without Wi-Fi client isolation. This profile uses host networking and allows
   UDP ports 3022/3024 and TCP ports 21587/21588 as documented upstream.
 - The default display path is XWayland under GNOME. For display or audio issues,

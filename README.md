@@ -13,7 +13,7 @@ To create a live-installer on an USB stick run the following command:
 ./create-live-installer.sh <path/to/usb-device>
 ```
 
-# Zwift on t14g1
+# Zwift
 
 See the [Zwift profile documentation](profiles/graphical/zwift/README.md) for setup,
 pairing, updates, and troubleshooting.
