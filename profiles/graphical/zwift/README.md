@@ -1,12 +1,10 @@
 # Zwift
 
-## Launch and update
+## Launch
 
-As `matte`, pull the game image before first launch and whenever an update is
-needed. Image updates are manual:
+As `matte`:
 
 ```sh
-podman pull docker.io/netbrain/zwift:latest
 zwift
 ```
 
