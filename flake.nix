@@ -190,6 +190,12 @@
           config.allowUnfree = true;
         };
 
+        checks.profile-discovery =
+          assert import ./tests/discover-modules.nix;
+          pkgs.runCommand "profile-discovery-check" { } ''
+            touch "$out"
+          '';
+
         packages =
           let
             cachix-deploy-lib = inputs.cachix-deploy.lib pkgs;
