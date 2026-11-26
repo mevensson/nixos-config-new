@@ -7,6 +7,7 @@ let
     modules = [
       ../profiles/core
       { imports = import ../lib/discover-modules.nix ../profiles/graphical; }
+      ../profiles/llm/llama-swap
       { system.stateVersion = "26.05"; }
       extra
     ];
@@ -34,6 +35,19 @@ let
     myConfigs.graphical.logitechg29 = {
       enable = true;
       new-lg4ff.enable = true;
+    };
+  };
+  dormantModels = evaluate {
+    myConfigs.llm.llama-swap.models = {
+      gemma4-12b.enable = true;
+      gemma4-26b.enable = true;
+      qwen3-5-9b.enable = true;
+    };
+  };
+  model = evaluate {
+    myConfigs.llm.llama-swap = {
+      enable = true;
+      models.gemma4-12b.enable = true;
     };
   };
 in
@@ -67,4 +81,11 @@ assert gamescope.myConfigs.graphical.steam.enable && gamescope.programs.steam.en
 assert gsconnect.myConfigs.graphical.gnome.enable;
 assert !dormantDriver.myConfigs.graphical.logitechg29.enable && !dormantDriver.hardware.new-lg4ff.enable;
 assert driver.hardware.new-lg4ff.enable;
+assert !disabled.services.llama-swap.enable;
+assert !dormantModels.myConfigs.llm.llama-swap.enable && !dormantModels.services.llama-swap.enable;
+assert (dormantModels.services.llama-swap.settings.models or { }) == { };
+assert !(dormantModels.users.users ? llama-swap);
+assert !(dormantModels.systemd.services ? llama-swap);
+assert model.services.llama-swap.enable;
+assert builtins.attrNames model.services.llama-swap.settings.models == [ "gemma4:12b" ];
 true

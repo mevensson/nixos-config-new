@@ -14,4 +14,12 @@
     spotify.enable = true;
     steam.enable = true;
   };
+  myConfigs.llm.llama-swap = {
+    enable = true;
+    models = {
+      gemma4-12b.enable = true;
+      gemma4-26b.enable = true;
+      qwen3-5-9b.enable = true;
+    };
+  };
 }
