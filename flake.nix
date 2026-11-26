@@ -98,24 +98,7 @@
             specialArgs = inputs;
             modules = [
               ./hosts/ryzen/configuration.nix
-
-              ./profiles/boot/systemd-boot.nix
-              ./profiles/core/default.nix
-              ./profiles/core/cachix-deploy.nix
-              ./profiles/graphical/discord.nix
-              ./profiles/graphical/gamescope-steam-session.nix
-              ./profiles/graphical/gdm.nix
-              ./profiles/graphical/ghostty.nix
-              ./profiles/graphical/gnome.nix
-              ./profiles/graphical/libreoffice.nix
-              ./profiles/graphical/logitechg29.nix
-              ./profiles/graphical/spotify.nix
-              ./profiles/graphical/steam.nix
-              ./profiles/llm/llama-swap
-              ./profiles/remotefs/sshfs/ds920.nix
-              ./profiles/shells/core.nix
-              ./profiles/shells/fish.nix
-              ./profiles/sound/pipewire.nix
+              ./profiles
 
               ./users/matte.nix
               ./users/test.nix
@@ -126,24 +109,7 @@
             specialArgs = inputs;
             modules = [
               ./hosts/t14g1/configuration.nix
-
-              ./profiles/boot/systemd-boot.nix
-              ./profiles/core/default.nix
-              ./profiles/core/cachix-deploy.nix
-              ./profiles/graphical/discord.nix
-              ./profiles/graphical/gamescope-steam-session.nix
-              ./profiles/graphical/gdm.nix
-              ./profiles/graphical/ghostty.nix
-              ./profiles/graphical/gnome.nix
-              ./profiles/graphical/libreoffice.nix
-              ./profiles/graphical/spotify.nix
-              ./profiles/graphical/steam.nix
-              ./profiles/graphical/zwift
-
-              ./profiles/remotefs/sshfs/ds920.nix
-              ./profiles/shells/core.nix
-              ./profiles/shells/fish.nix
-              ./profiles/sound/pipewire.nix
+              ./profiles
 
               ./users/matte.nix
             ];
@@ -153,16 +119,7 @@
             specialArgs = inputs;
             modules = [
               ./hosts/game/configuration.nix
-
-              ./profiles/boot/systemd-boot.nix
-              ./profiles/core/default.nix
-              ./profiles/core/cachix-deploy.nix
-              ./profiles/graphical/ghostty.nix
-              ./profiles/graphical/gnome.nix
-              ./profiles/remotefs/sshfs/ds920.nix
-              ./profiles/shells/core.nix
-              ./profiles/shells/fish.nix
-              ./profiles/sound/pipewire.nix
+              ./profiles
 
               ./users/matte.nix
             ];
@@ -172,6 +129,9 @@
             specialArgs = inputs;
             modules = [
               ./hosts/live-installer/configuration.nix
+              ./profiles
+
+              ./users/matte.nix
             ];
           };
         };

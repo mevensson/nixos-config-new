@@ -5,17 +5,7 @@ let
     system = "x86_64-linux";
     specialArgs = inputs;
     modules = [
-      ../profiles/core
-      { imports = import ../lib/discover-modules.nix ../profiles/graphical; }
-      ../profiles/llm/llama-swap
-      {
-        imports = builtins.concatLists (map (import ../lib/discover-modules.nix) [
-          ../profiles/boot
-          ../profiles/remotefs
-          ../profiles/shells
-          ../profiles/sound
-        ]);
-      }
+      ../profiles
       { system.stateVersion = "26.05"; }
       extra
     ];
