@@ -1,5 +1,10 @@
 { ... }:
 {
+  myConfigs.core = {
+    enable = true;
+    disko.enable = true;
+  };
+
   imports = [
     ../../profiles/boot/systemd-boot.nix
     ../../profiles/core/default.nix

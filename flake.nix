@@ -196,6 +196,12 @@
             touch "$out"
           '';
 
+        checks.profile-options =
+          assert import ./tests/profile-options.nix { inherit inputs; };
+          pkgs.runCommand "profile-options-check" { } ''
+            touch "$out"
+          '';
+
         packages =
           let
             cachix-deploy-lib = inputs.cachix-deploy.lib pkgs;
