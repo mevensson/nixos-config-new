@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
-  environment.shells = [ pkgs.fish ];
+  options.myConfigs.shells.fish.enable = lib.mkEnableOption "the Fish shell";
 
-  programs.fish.enable = true;
+  config = lib.mkIf config.myConfigs.shells.fish.enable {
+    environment.shells = [ pkgs.fish ];
+
+    programs.fish.enable = true;
+  };
 }

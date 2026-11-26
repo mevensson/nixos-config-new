@@ -1,14 +1,18 @@
-{ ... }: {
-  security.rtkit.enable = true;
+{ config, lib, ... }: {
+  options.myConfigs.sound.pipewire.enable = lib.mkEnableOption "the PipeWire audio profile";
 
-  services = {
-    pulseaudio.enable = false;
+  config = lib.mkIf config.myConfigs.sound.pipewire.enable {
+    security.rtkit.enable = true;
 
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
+    services = {
+      pulseaudio.enable = false;
+
+      pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
     };
   };
 }

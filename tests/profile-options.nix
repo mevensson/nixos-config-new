@@ -8,6 +8,14 @@ let
       ../profiles/core
       { imports = import ../lib/discover-modules.nix ../profiles/graphical; }
       ../profiles/llm/llama-swap
+      {
+        imports = builtins.concatLists (map (import ../lib/discover-modules.nix) [
+          ../profiles/boot
+          ../profiles/remotefs
+          ../profiles/shells
+          ../profiles/sound
+        ]);
+      }
       { system.stateVersion = "26.05"; }
       extra
     ];
@@ -50,6 +58,7 @@ let
       models.gemma4-12b.enable = true;
     };
   };
+  remoteMounts = evaluate { myConfigs.remotefs.sshfs.ds920.enable = true; };
 in
 assert !disabled.myConfigs.core.enable;
 assert builtins.all (name: name == "enable" || !disabled.myConfigs.core.${name}.enable) (builtins.attrNames disabled.myConfigs.core);
@@ -88,4 +97,10 @@ assert !(dormantModels.users.users ? llama-swap);
 assert !(dormantModels.systemd.services ? llama-swap);
 assert model.services.llama-swap.enable;
 assert builtins.attrNames model.services.llama-swap.settings.models == [ "gemma4:12b" ];
+assert !disabled.boot.loader.systemd-boot.enable;
+assert !disabled.programs.fish.enable;
+assert !disabled.services.pipewire.enable;
+assert !(disabled.fileSystems ? "/media/ds920/Media");
+assert remoteMounts.myConfigs.core.agenix.enable;
+assert remoteMounts.fileSystems."/media/ds920/Media".fsType == "sshfs";
 true
