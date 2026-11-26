@@ -1,25 +1,28 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
-  ];
+{ config, lib, pkgs, ... }: {
+  options.myConfigs.graphical.gdm.enable = lib.mkEnableOption "the GDM display manager profile";
 
-  boot.plymouth.enable = false;
+  config = lib.mkIf config.myConfigs.graphical.gdm.enable {
+    environment.systemPackages = with pkgs; [
+    ];
 
-  services = {
-    libinput = {
-      enable = true;
-    };
+    boot.plymouth.enable = false;
 
-    displayManager.gdm = {
-      enable = true;
-    };
+    services = {
+      libinput = {
+        enable = true;
+      };
 
-    xserver = {
-      enable = true;
+      displayManager.gdm = {
+        enable = true;
+      };
 
-      xkb = {
-        layout = "se";
+      xserver = {
+        enable = true;
+
+        xkb = {
+          layout = "se";
+        };
       };
     };
   };
 }
-

@@ -4,6 +4,10 @@
     enable = true;
     disko.enable = true;
   };
+  myConfigs.graphical = {
+    gdm.enable = true;
+    gnome.enable = true;
+  };
 
   imports = [
     ../../profiles/boot/systemd-boot.nix

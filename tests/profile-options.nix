@@ -6,6 +6,7 @@ let
     specialArgs = inputs;
     modules = [
       ../profiles/core
+      { imports = import ../lib/discover-modules.nix ../profiles/graphical; }
       { system.stateVersion = "26.05"; }
       extra
     ];
@@ -26,6 +27,15 @@ let
     myConfigs.core.agenix.enable = false;
   };
   nur = evaluate { myConfigs.core.nur.enable = true; };
+  gamescope = evaluate { myConfigs.graphical.gamescope-steam-session.enable = true; };
+  gsconnect = evaluate { myConfigs.graphical.gsconnect.enable = true; };
+  dormantDriver = evaluate { myConfigs.graphical.logitechg29.new-lg4ff.enable = true; };
+  driver = evaluate {
+    myConfigs.graphical.logitechg29 = {
+      enable = true;
+      new-lg4ff.enable = true;
+    };
+  };
 in
 assert !disabled.myConfigs.core.enable;
 assert builtins.all (name: name == "enable" || !disabled.myConfigs.core.${name}.enable) (builtins.attrNames disabled.myConfigs.core);
@@ -46,4 +56,15 @@ assert !standalone.myConfigs.core.enable && standalone.services.openssh.enable;
 assert deploy.myConfigs.core.agenix.enable;
 assert !overriddenDependency.myConfigs.core.agenix.enable && !overriddenDependency.age.enable;
 assert nur.myConfigs.core.home-manager.enable;
+assert !disabled.services.desktopManager.gnome.enable;
+assert !disabled.services.desktopManager.plasma6.enable;
+assert !disabled.services.displayManager.gdm.enable;
+assert !disabled.programs.zwift.enable;
+assert !disabled.virtualisation.podman.enable && !disabled.virtualisation.docker.enable;
+assert disabled.networking.firewall.allowedTCPPorts == [ ];
+assert disabled.networking.firewall.allowedUDPPorts == [ ];
+assert gamescope.myConfigs.graphical.steam.enable && gamescope.programs.steam.enable;
+assert gsconnect.myConfigs.graphical.gnome.enable;
+assert !dormantDriver.myConfigs.graphical.logitechg29.enable && !dormantDriver.hardware.new-lg4ff.enable;
+assert driver.hardware.new-lg4ff.enable;
 true
