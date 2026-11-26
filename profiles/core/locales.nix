@@ -1,23 +1,27 @@
-{ ... }: {
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "sv-latin1";
-  };
+{ config, lib, ... }: {
+  options.myConfigs.core.locales.enable = lib.mkEnableOption "Swedish locale and timezone settings";
 
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "sv_SE.UTF-8";
-      LC_IDENTIFICATION = "sv_SE.UTF-8";
-      LC_MEASUREMENT = "sv_SE.UTF-8";
-      LC_MONETARY = "sv_SE.UTF-8";
-      LC_NAME = "sv_SE.UTF-8";
-      LC_NUMERIC = "sv_SE.UTF-8";
-      LC_PAPER = "sv_SE.UTF-8";
-      LC_TELEPHONE = "sv_SE.UTF-8";
-      LC_TIME = "sv_SE.UTF-8";
+  config = lib.mkIf config.myConfigs.core.locales.enable {
+    console = {
+      font = "Lat2-Terminus16";
+      keyMap = "sv-latin1";
     };
-  };
 
-  time.timeZone = "Europe/Stockholm";
+    i18n = {
+      defaultLocale = "en_US.UTF-8";
+      extraLocaleSettings = {
+        LC_ADDRESS = "sv_SE.UTF-8";
+        LC_IDENTIFICATION = "sv_SE.UTF-8";
+        LC_MEASUREMENT = "sv_SE.UTF-8";
+        LC_MONETARY = "sv_SE.UTF-8";
+        LC_NAME = "sv_SE.UTF-8";
+        LC_NUMERIC = "sv_SE.UTF-8";
+        LC_PAPER = "sv_SE.UTF-8";
+        LC_TELEPHONE = "sv_SE.UTF-8";
+        LC_TIME = "sv_SE.UTF-8";
+      };
+    };
+
+    time.timeZone = "Europe/Stockholm";
+  };
 }

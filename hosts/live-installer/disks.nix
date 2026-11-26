@@ -1,7 +1,6 @@
 { ... }:
 {
   imports = [
-    ../../profiles/core/disko/default.nix
     #    ../../profiles/core/disko/root-tmpfs.nix
     #    ../../profiles/core/disko/gpt.nix
     #    ../../profiles/core/disko/esp.nix

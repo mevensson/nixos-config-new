@@ -1,24 +1,28 @@
-{ pkgs, zwift, ... }: {
+{ config, lib, pkgs, zwift, ... }: {
   imports = [ zwift.nixosModules.default ];
 
-  programs.zwift = {
-    enable = true;
-    containerTool = "podman";
-    networking = "host";
-    # Update the launcher through Nix and pull container images manually.
-    dontUpdate = true;
-    disableBluetooth = true;
-    privilegedContainer = false;
-  };
+  options.myConfigs.graphical.zwift.enable = lib.mkEnableOption "the Zwift system profile";
 
-  environment.systemPackages = with pkgs; [
-    curl
-    xhost
-  ];
+  config = lib.mkIf config.myConfigs.graphical.zwift.enable {
+    programs.zwift = {
+      enable = true;
+      containerTool = "podman";
+      networking = "host";
+      # Update the launcher through Nix and pull container images manually.
+      dontUpdate = true;
+      disableBluetooth = true;
+      privilegedContainer = false;
+    };
 
-  # Companion bridging and network-connected trainer discovery.
-  networking.firewall = {
-    allowedUDPPorts = [ 3022 3024 ];
-    allowedTCPPorts = [ 21587 21588 ];
+    environment.systemPackages = with pkgs; [
+      curl
+      xhost
+    ];
+
+    # Companion bridging and network-connected trainer discovery.
+    networking.firewall = {
+      allowedUDPPorts = [ 3022 3024 ];
+      allowedTCPPorts = [ 21587 21588 ];
+    };
   };
 }

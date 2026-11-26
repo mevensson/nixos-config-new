@@ -1,27 +1,31 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
-    gnome-tweaks
-    mission-center
+{ config, lib, pkgs, ... }: {
+  options.myConfigs.graphical.gnome.enable = lib.mkEnableOption "the GNOME desktop profile";
 
-    firmware-updater
-    gnome-firmware
+  config = lib.mkIf config.myConfigs.graphical.gnome.enable {
+    environment.systemPackages = with pkgs; [
+      gnome-tweaks
+      mission-center
 
-    celluloid
-  ];
+      firmware-updater
+      gnome-firmware
 
-  fonts.packages = with pkgs; [
-    jetbrains-mono
-    pkgs."nerd-fonts".jetbrains-mono
-  ];
+      celluloid
+    ];
 
-  services = {
-    # Enable flatpak for gnome-software
-    flatpak = {
-      enable = true;
-    };
+    fonts.packages = with pkgs; [
+      jetbrains-mono
+      pkgs."nerd-fonts".jetbrains-mono
+    ];
 
-    desktopManager.gnome = {
-      enable = true;
+    services = {
+      # Enable flatpak for gnome-software
+      flatpak = {
+        enable = true;
+      };
+
+      desktopManager.gnome = {
+        enable = true;
+      };
     };
   };
 }
