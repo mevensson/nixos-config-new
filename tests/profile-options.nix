@@ -1,6 +1,15 @@
 { inputs }:
 let
   lib = inputs.nixpkgs.lib;
+  allDisabled = value:
+    if builtins.isAttrs value then
+      builtins.all allDisabled (builtins.attrValues value)
+    else
+      value == false;
+  plain = (lib.nixosSystem {
+    system = "x86_64-linux";
+    modules = [{ system.stateVersion = "26.05"; }];
+  }).config;
   evaluate = extra: (lib.nixosSystem {
     system = "x86_64-linux";
     specialArgs = inputs;
@@ -49,9 +58,26 @@ let
     };
   };
   remoteMounts = evaluate { myConfigs.remotefs.sshfs.ds920.enable = true; };
+  withDevices = enable: evaluate {
+    myConfigs.core.disko.enable = enable;
+    disko.devices.disk.example = {
+      type = "disk";
+      device = "/dev/example";
+      content = {
+        type = "filesystem";
+        format = "ext4";
+        mountpoint = "/example";
+      };
+    };
+  };
+  zwift = evaluate { myConfigs.graphical.zwift.enable = true; };
+  kde = evaluate { myConfigs.graphical.kde.enable = true; };
 in
-assert !disabled.myConfigs.core.enable;
-assert builtins.all (name: name == "enable" || !disabled.myConfigs.core.${name}.enable) (builtins.attrNames disabled.myConfigs.core);
+assert allDisabled disabled.myConfigs;
+# Static imports must not add runtime effects when every profile is disabled.
+assert map toString disabled.environment.systemPackages == map toString plain.environment.systemPackages;
+assert builtins.attrNames disabled.systemd.services == builtins.attrNames plain.systemd.services;
+assert builtins.attrNames disabled.system.activationScripts == builtins.attrNames plain.system.activationScripts;
 assert !disabled.age.enable;
 assert !disabled.programs.nix-index-database.enable;
 assert !disabled.programs.nix-index.enable;
@@ -93,4 +119,10 @@ assert !disabled.services.pipewire.enable;
 assert !(disabled.fileSystems ? "/media/ds920/Media");
 assert remoteMounts.myConfigs.core.agenix.enable;
 assert remoteMounts.fileSystems."/media/ds920/Media".fsType == "sshfs";
+assert !((withDevices false).fileSystems ? "/example");
+assert (withDevices true).fileSystems."/example".fsType == "ext4";
+assert zwift.programs.zwift.enable && zwift.virtualisation.podman.enable;
+assert zwift.networking.firewall.allowedTCPPorts == [ 21587 21588 ];
+assert zwift.networking.firewall.allowedUDPPorts == [ 3022 3024 ];
+assert kde.services.desktopManager.plasma6.enable;
 true
